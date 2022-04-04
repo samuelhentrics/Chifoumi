@@ -26,19 +26,19 @@ Chifoumi::~Chifoumi()
         /// Getters
 
 Chifoumi::UnCoup Chifoumi::getCoupJoueur() {
-	return rien;
+    return coupJoueur;
 }
 
 Chifoumi::UnCoup Chifoumi::getCoupMachine() {
-    return rien;
+    return coupMachine;
 }
 
 unsigned int Chifoumi::getScoreJoueur() {
-    return 0;
+    return scoreJoueur;
 }
 
 unsigned int Chifoumi::getScoreMachine() {
-    return 0;
+    return scoreMachine;
 }
 
 char Chifoumi::determinerGagnant()
@@ -49,7 +49,9 @@ char Chifoumi::determinerGagnant()
     gagnantARetourner = 'N';
 
     // il sera modifié dans l'un des cas suivants
+    if (getCoupJoueur()>getCoupMachine()){
 
+    }
 
     return gagnantARetourner;
 }
@@ -73,22 +75,36 @@ Chifoumi::UnCoup Chifoumi::genererUnCoup()
         /// Setters
 
 void Chifoumi::setCoupJoueur(UnCoup p_coup) {
+    coupJoueur = p_coup;
 }
 
 void Chifoumi::setCoupMachine(UnCoup p_coup) {
+    coupMachine = p_coup;
 }
 
 void Chifoumi::setScoreJoueur(unsigned int p_score) {
+    scoreJoueur = p_score+1;
 }
 
 void Chifoumi::setScoreMachine(unsigned int p_score) {
+    scoreJoueur = p_score+1;
 }
 
 void Chifoumi::majScores(char p_gagnant) {
+    if (p_gagnant=='M'){
+        setScoreMachine(getScoreMachine());
+    }
+    else if (p_gagnant=='J'){
+        setScoreJoueur(getScoreJoueur());
+    }
 }
 
 void Chifoumi::initScores() {
+    scoreJoueur=0;
+    scoreMachine=0;
 }
 
 void Chifoumi::initCoups() {
+    coupJoueur= rien;
+    coupMachine = rien;
 }

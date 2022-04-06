@@ -10,12 +10,17 @@
 #include <ctime>
 
 
-    ///* ---- PARTIE MODèLE ---------------------------
+///* ---- PARTIE MODèLE ---------------------------
 
 Chifoumi::Chifoumi()
 {
     //ctor
     // partie modèle
+    scoreJoueur=0;
+    scoreMachine=0;
+    coupJoueur=rien;
+    coupMachine=rien;
+
 }
 
 Chifoumi::~Chifoumi()
@@ -23,7 +28,7 @@ Chifoumi::~Chifoumi()
     //dtor
 }
 
-        /// Getters
+/// Getters
 
 Chifoumi::UnCoup Chifoumi::getCoupJoueur() {
     return coupJoueur;
@@ -49,30 +54,37 @@ char Chifoumi::determinerGagnant()
     gagnantARetourner = 'N';
 
     // il sera modifié dans l'un des cas suivants
-    if (getCoupJoueur()>getCoupMachine()){
 
+    if (getCoupJoueur()>=0 && getCoupJoueur()<=2
+            && getCoupMachine()>=0 && getCoupMachine()<=2){
+        if ((getCoupJoueur()>getCoupMachine()) || (getCoupJoueur()==0 && getCoupMachine()==3)){
+            gagnantARetourner = 'J';
+        }
+        if ((getCoupMachine()>getCoupJoueur()) || (getCoupMachine()==0 && getCoupJoueur()==3)){
+            gagnantARetourner = 'M';
+        }
     }
 
     return gagnantARetourner;
 }
 
-         ///* Méthodes utilitaires du Modèle
+///* Méthodes utilitaires du Modèle
 
 int randMinMax(int min, int max){
     /* pré-condition : min<max ;
        Le nbre aléatoire est compris entre [min, max[ */
-   return rand()%(max-min) + min;
+    return rand()%(max-min) + min;
 }
 
 Chifoumi::UnCoup Chifoumi::genererUnCoup()
 {
     UnCoup valeurGeneree;   // valeur à retourner
 
-	valeurGeneree = rien;
+    valeurGeneree = rien;
     return valeurGeneree;
 }
 
-        /// Setters
+/// Setters
 
 void Chifoumi::setCoupJoueur(UnCoup p_coup) {
     coupJoueur = p_coup;
@@ -83,19 +95,19 @@ void Chifoumi::setCoupMachine(UnCoup p_coup) {
 }
 
 void Chifoumi::setScoreJoueur(unsigned int p_score) {
-    scoreJoueur = p_score+1;
+    scoreJoueur = p_score;
 }
 
 void Chifoumi::setScoreMachine(unsigned int p_score) {
-    scoreJoueur = p_score+1;
+    scoreMachine = p_score;
 }
 
 void Chifoumi::majScores(char p_gagnant) {
     if (p_gagnant=='M'){
-        setScoreMachine(getScoreMachine());
+        setScoreMachine(getScoreMachine()+1);
     }
     else if (p_gagnant=='J'){
-        setScoreJoueur(getScoreJoueur());
+        setScoreJoueur(getScoreJoueur()+1);
     }
 }
 

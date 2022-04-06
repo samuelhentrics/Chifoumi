@@ -16,6 +16,11 @@ Chifoumi::Chifoumi()
 {
     //ctor
     // partie modèle
+    scoreJoueur=0;
+    scoreMachine=0;
+    coupJoueur=rien;
+    coupMachine=rien;
+
 }
 
 Chifoumi::~Chifoumi()
@@ -49,8 +54,15 @@ char Chifoumi::determinerGagnant()
     gagnantARetourner = 'N';
 
     // il sera modifié dans l'un des cas suivants
-    if (getCoupJoueur()>getCoupMachine()){
 
+    if (getCoupJoueur()>=0 && getCoupJoueur()<=2
+            && getCoupMachine()>=0 && getCoupMachine()<=2){
+        if ((getCoupJoueur()>getCoupMachine()) || (getCoupJoueur()==0 && getCoupMachine()==3)){
+            gagnantARetourner = 'J';
+        }
+        if ((getCoupMachine()>getCoupJoueur()) || (getCoupMachine()==0 && getCoupJoueur()==3)){
+            gagnantARetourner = 'M';
+        }
     }
 
     return gagnantARetourner;
@@ -67,6 +79,8 @@ int randMinMax(int min, int max){
 Chifoumi::UnCoup Chifoumi::genererUnCoup()
 {
     UnCoup valeurGeneree;   // valeur à retourner
+
+    valeurGeneree = rien;
     int valeurAleatoire;   // valeur aléatoire retourner par la machine
     valeurGeneree=rien;
     valeurAleatoire = randMinMax(1,3);
@@ -90,19 +104,19 @@ void Chifoumi::setCoupMachine(UnCoup p_coup) {
 }
 
 void Chifoumi::setScoreJoueur(unsigned int p_score) {
-    scoreJoueur = p_score+1;
+    scoreJoueur = p_score;
 }
 
 void Chifoumi::setScoreMachine(unsigned int p_score) {
-    scoreJoueur = p_score+1;
+    scoreMachine = p_score;
 }
 
 void Chifoumi::majScores(char p_gagnant) {
     if (p_gagnant=='M'){
-        setScoreMachine(getScoreMachine());
+        setScoreMachine(getScoreMachine()+1);
     }
     else if (p_gagnant=='J'){
-        setScoreJoueur(getScoreJoueur());
+        setScoreJoueur(getScoreJoueur()+1);
     }
 }
 

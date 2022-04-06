@@ -45,7 +45,7 @@ char Chifoumi::determinerGagnant()
 {
     char gagnantARetourner;
 
-    // avant de commencer : match nul
+    // avant de commencer : match nul 
     gagnantARetourner = 'N';
 
     // il sera modifié dans l'un des cas suivants
@@ -67,8 +67,13 @@ int randMinMax(int min, int max){
 Chifoumi::UnCoup Chifoumi::genererUnCoup()
 {
     UnCoup valeurGeneree;   // valeur à retourner
-
-	valeurGeneree = rien;
+    int valeurAleatoire;   // valeur aléatoire retourner par la machine
+    valeurAleatoire = randMinMax(1,3);
+    switch (valeurAleatoire) {
+    case 1 : valeurGeneree=pierre;
+    case 2 : valeurGeneree=papier;
+    case 3 : valeurGeneree=ciseau;
+    }
     return valeurGeneree;
 }
 

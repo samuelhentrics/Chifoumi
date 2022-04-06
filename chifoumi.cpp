@@ -10,7 +10,7 @@
 #include <ctime>
 
 
-    ///* ---- PARTIE MODèLE ---------------------------
+///* ---- PARTIE MODèLE ---------------------------
 
 Chifoumi::Chifoumi()
 {
@@ -23,7 +23,7 @@ Chifoumi::~Chifoumi()
     //dtor
 }
 
-        /// Getters
+/// Getters
 
 Chifoumi::UnCoup Chifoumi::getCoupJoueur() {
     return coupJoueur;
@@ -45,7 +45,7 @@ char Chifoumi::determinerGagnant()
 {
     char gagnantARetourner;
 
-    // avant de commencer : match nul 
+    // avant de commencer : match nul
     gagnantARetourner = 'N';
 
     // il sera modifié dans l'un des cas suivants
@@ -56,28 +56,30 @@ char Chifoumi::determinerGagnant()
     return gagnantARetourner;
 }
 
-         ///* Méthodes utilitaires du Modèle
+///* Méthodes utilitaires du Modèle
 
 int randMinMax(int min, int max){
     /* pré-condition : min<max ;
        Le nbre aléatoire est compris entre [min, max[ */
-   return rand()%(max-min) + min;
+    return rand()%(max-min) + min;
 }
 
 Chifoumi::UnCoup Chifoumi::genererUnCoup()
 {
     UnCoup valeurGeneree;   // valeur à retourner
     int valeurAleatoire;   // valeur aléatoire retourner par la machine
+    valeurGeneree=rien;
     valeurAleatoire = randMinMax(1,3);
     switch (valeurAleatoire) {
-    case 1 : valeurGeneree=pierre;
-    case 2 : valeurGeneree=papier;
-    case 3 : valeurGeneree=ciseau;
+    case 1 : valeurGeneree=pierre; break;
+    case 2 : valeurGeneree=papier; break;
+    case 3 : valeurGeneree=ciseau; break;
+    default : break;
     }
     return valeurGeneree;
 }
 
-        /// Setters
+/// Setters
 
 void Chifoumi::setCoupJoueur(UnCoup p_coup) {
     coupJoueur = p_coup;

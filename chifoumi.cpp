@@ -1,8 +1,8 @@
 /***************************************************************
- * Name:      chifoumiMain.h
- * Author:    P.Dagorret ()
- * Created:   2021-05-10
- * Description : classe métier (= modèle) Chifoumi-v1
+ * Name:      chifoumiMain.cpp
+ * Author:    Samuel HENTRICS LOISTINE, Ahmed FAKHFAKH, CÃ©dric ETCHEPARE
+ * Created:   2022-04-14
+ * Description : Chifourmi v0
  **************************************************************/
 #include "chifoumi.h"
 
@@ -10,12 +10,12 @@
 #include <ctime>
 
 
-///* ---- PARTIE MODèLE ---------------------------
+///* ---- PARTIE MODÃ¨LE ---------------------------
 
 Chifoumi::Chifoumi()
 {
     //ctor
-    // partie modèle
+    // partie modÃ¨le
     scoreJoueur=0;
     scoreMachine=0;
     coupJoueur=rien;
@@ -53,14 +53,20 @@ char Chifoumi::determinerGagnant()
     // avant de commencer : match nul
     gagnantARetourner = 'N';
 
-    // il sera modifié dans l'un des cas suivants
+    // il sera modifiÃ© dans l'un des cas suivants
 
     if (getCoupJoueur()>=0 && getCoupJoueur()<=2
             && getCoupMachine()>=0 && getCoupMachine()<=2){
-        if ((getCoupJoueur()>getCoupMachine()) || (getCoupJoueur()==0 && getCoupMachine()==3)){
+        if (getCoupJoueur()==0 && getCoupMachine()==2){
             gagnantARetourner = 'J';
         }
-        if ((getCoupMachine()>getCoupJoueur()) || (getCoupMachine()==0 && getCoupJoueur()==3)){
+        else if (getCoupMachine()==0 && getCoupJoueur()==2){
+            gagnantARetourner = 'M';
+        }
+        else if (getCoupJoueur()>getCoupMachine()){
+            gagnantARetourner = 'J';
+        }
+        else if (getCoupMachine()>getCoupJoueur()){
             gagnantARetourner = 'M';
         }
     }
@@ -68,20 +74,20 @@ char Chifoumi::determinerGagnant()
     return gagnantARetourner;
 }
 
-///* Méthodes utilitaires du Modèle
+///* MÃ©thodes utilitaires du ModÃ¨le
 
 int randMinMax(int min, int max){
-    /* pré-condition : min<max ;
-       Le nbre aléatoire est compris entre [min, max[ */
+    /* prÃ©-condition : min<max ;
+       Le nbre alÃ©atoire est compris entre [min, max[ */
     return rand()%(max-min) + min;
 }
 
 Chifoumi::UnCoup Chifoumi::genererUnCoup()
 {
-    UnCoup valeurGeneree;   // valeur à retourner
+    UnCoup valeurGeneree;   // valeur Ã  retourner
 
     valeurGeneree = rien;
-    int valeurAleatoire;   // valeur aléatoire retourner par la machine
+    int valeurAleatoire;   // valeur alÃ©atoire retourner par la machine
     valeurGeneree=rien;
     valeurAleatoire = randMinMax(1,3);
     switch (valeurAleatoire) {

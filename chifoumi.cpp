@@ -89,7 +89,7 @@ Chifoumi::UnCoup Chifoumi::genererUnCoup()
     valeurGeneree = rien;
     int valeurAleatoire;   // valeur aléatoire retourner par la machine
     valeurGeneree=rien;
-    valeurAleatoire = randMinMax(1,3);
+    valeurAleatoire = randMinMax(1,4);
     switch (valeurAleatoire) {
     case 1 : valeurGeneree=pierre; break;
     case 2 : valeurGeneree=papier; break;
@@ -119,9 +119,11 @@ void Chifoumi::setScoreMachine(unsigned int p_score) {
 
 void Chifoumi::majScores(char p_gagnant) {
     if (p_gagnant=='M'){
+        // On incrémente le score de la machine si la machine a gagné
         setScoreMachine(getScoreMachine()+1);
     }
     else if (p_gagnant=='J'){
+        // On incrémente le score du joueur si le joueur a gagné
         setScoreJoueur(getScoreJoueur()+1);
     }
 }

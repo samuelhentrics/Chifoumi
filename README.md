@@ -35,20 +35,20 @@
   <summary>Table des matières</summary>
   <ol>
     <li>
-      <a href="#about-the-project">A propos du projet</a>
+      <a href="#a-propos-du-projet">A propos du projet</a>
       <ul>
-        <li><a href="#built-with">Crée avec</a></li>
+        <li><a href="#crée-avec">Crée avec</a></li>
       </ul>
     </li>
     <li>
-      <a href="#getting-started">Commencer</a>
+      <a href="#commencer">Commencer</a>
       <ul>
-        <li><a href="#prerequisites">Pré-requis</a></li>
+        <li><a href="#pré-requis">Pré-requis</a></li>
         <li><a href="#installation">Installation</a></li>
       </ul>
     </li>
     <li><a href="#roadmap">Roadmap</a></li>
-    <li><a href="#contributing">Contribution</a></li>
+    <li><a href="#contribution">Contribution</a></li>
     <li><a href="#contact">Contact</a></li>
   </ol>
 </details>

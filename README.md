@@ -23,12 +23,12 @@
   <p align="center">
     S2.01 - Développement d'une application
     <br />
-    <a href="https://github.com/samuelhentrics/s2-01/tree/master/docs"><strong>Voir les documents »</strong></a>
+    <a href="https://github.com/samuelhentrics/chifoumi/tree/master/docs"><strong>Voir les documents »</strong></a>
     <br />
     <br />
-    <a href="https://github.com/samuelhentrics/s2-01/issues/1">Reporter un bug</a>
+    <a href="https://github.com/samuelhentrics/chifoumi/issues/1">Reporter un bug</a>
     ·
-    <a href="https://github.com/samuelhentrics/s2-01/issues/2">Proposer des fonctionnalités</a>
+    <a href="https://github.com/samuelhentrics/chifoumi/issues/2">Proposer des fonctionnalités</a>
   </p>
 </div>
 
@@ -89,8 +89,8 @@ Pour obtenir une copie locale opérationnelle, suivez ces étapes d'exemple simp
 
 ### Pré-requis
 
-Qt
-C++
+* Qt
+* C++
 
 ### Installation
 
@@ -149,18 +149,18 @@ Ahmed FAKHFAKH - afakhfakh@iutbayonne.univ-pau.fr
 
 Cédric ETCHEPARE - cetchepar001@iutbayonne.univ-pau.fr
 
-Lien du projet: [https://github.com/samuelhentrics/s2-01](https://github.com/samuelhentrics/s2-01)
+Lien du projet: [https://github.com/samuelhentrics/chifoumi](https://github.com/samuelhentrics/chifoumi)
 
 <p align="right">(<a href="#top">Retour en haut</a>)</p>
 
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-[contributors-shield]: https://img.shields.io/github/contributors/samuelhentrics/s2-01?style=for-the-badge
-[contributors-url]: https://github.com/samuelhentrics/s2-01/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/samuelhentrics/s2-01.svg?style=for-the-badge
-[forks-url]: https://github.com/samuelhentrics/s2-01/network/members
-[stars-shield]: https://img.shields.io/github/stars/samuelhentrics/s2-01.svg?style=for-the-badge
-[stars-url]: https://github.com/samuelhentrics/s2-01/stargazers
-[issues-shield]: https://img.shields.io/github/issues/samuelhentrics/s2-01.svg?style=for-the-badge
-[issues-url]: https://github.com/samuelhentrics/s2-01/issues
+[contributors-shield]: https://img.shields.io/github/contributors/samuelhentrics/chifoumi?style=for-the-badge
+[contributors-url]: https://github.com/samuelhentrics/chifoumi/graphs/contributors
+[forks-shield]: https://img.shields.io/github/forks/samuelhentrics/chifoumi.svg?style=for-the-badge
+[forks-url]: https://github.com/samuelhentrics/chifoumi/network/members
+[stars-shield]: https://img.shields.io/github/stars/samuelhentrics/chifoumi.svg?style=for-the-badge
+[stars-url]: https://github.com/samuelhentrics/chifoumi/stargazers
+[issues-shield]: https://img.shields.io/github/issues/samuelhentrics/chifoumi.svg?style=for-the-badge
+[issues-url]: https://github.com/samuelhentrics/chifoumi/issues

@@ -140,7 +140,9 @@ N'oubliez pas de mettre une étoile au projet ! Merci encore!
 ## Contact
 
 Samuel HENTRICS LOISTINE -  samuel.hentrics@gmail.com
+
 Ahmed FAKHFAKH - afakhfakh@iutbayonne.univ-pau.fr
+
 Cédric ETCHEPARE - cetchepar001@iutbayonne.univ-pau.fr
 
 Lien du projet: [https://github.com/samuelhentrics/s2-01](https://github.com/samuelhentrics/s2-01)

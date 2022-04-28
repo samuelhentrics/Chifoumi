@@ -4,10 +4,14 @@
 [![Forks][forks-shield]][forks-url]
 [![Stargazers][stars-shield]][stars-url]
 [![Issues][issues-shield]][issues-url]
+<div align="center">
 (Nombre non fonctionnel -> le projet est en privé)
+</div>
+
 
 
 <!-- PROJECT LOGO -->
+<br />
 <br />
 <div align="center">
   <img src="images/ciseau_115.png" alt="Logo" width="80" height="80">

@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>417</width>
+    <width>422</width>
     <height>570</height>
    </rect>
   </property>
@@ -22,7 +22,7 @@
      <number>20</number>
     </property>
     <item>
-     <layout class="QHBoxLayout" name="hScoreLayout">
+     <layout class="QHBoxLayout" name="hEcranLayout">
       <item>
        <layout class="QVBoxLayout" name="vJoueurLayout">
         <item>
@@ -224,7 +224,7 @@
      </spacer>
     </item>
     <item>
-     <widget class="QGroupBox" name="groupBox">
+     <widget class="QGroupBox" name="groupCoupBox">
       <property name="title">
        <string>Choisissez une figure:</string>
       </property>
@@ -358,7 +358,7 @@
      </widget>
     </item>
     <item>
-     <layout class="QHBoxLayout" name="hPartieLayout">
+     <layout class="QHBoxLayout" name="hBoutonLayout">
       <item>
        <spacer name="horizontalSpacer">
         <property name="orientation">
@@ -388,8 +388,8 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>417</width>
-     <height>21</height>
+     <width>422</width>
+     <height>26</height>
     </rect>
    </property>
   </widget>

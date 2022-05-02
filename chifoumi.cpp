@@ -27,6 +27,8 @@ Chifoumi::Chifoumi(QWidget *parent)
     ui->setupUi(this);
 
     connect(ui->bNouvellePartie, SIGNAL(clicked()), this, SLOT(lancerPartie()));
+    connect(ui->actionQuitter, SIGNAL(triggered()), QCoreApplication::instance(), SLOT(quit()), Qt::QueuedConnection);
+    connect(ui->actionA_propos_de, SIGNAL(triggered()), this, SLOT(informations()));
 }
 
 Chifoumi::~Chifoumi()
@@ -130,6 +132,9 @@ void Chifoumi::jouerPartie(UnCoup coup){
 
 }
 
+void Chifoumi::informations(){
+    ui->lScoreJoueur->setText("TEST");
+}
 
 Chifoumi::UnCoup Chifoumi::getCoupJoueur() {
     return coupJoueur;

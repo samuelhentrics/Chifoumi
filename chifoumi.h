@@ -83,10 +83,20 @@ private:
 
     public slots:
         void lancerPartie();
+            /* Permet de lancer une partie entre le joueur et la machine
+            */
         void jouerCiseau();
+            /* Le joueur décide de jouer ciseau */
         void jouerPapier();
+            /* Le joueur décide de jouer papier */
         void jouerPierre();
+            /* Le joueur décide de jouer pierre */
         void jouerPartie(UnCoup coup);
+            /* Permet de déterminer le gagnant et met à jour l'interface
+              à partir d'un coup (coup) donné par le joueur */
+        void informations();
+            /* Permet l'affichage "A propos de..." pour l'utilisateur */
+
 };
 
 

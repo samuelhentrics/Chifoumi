@@ -91,10 +91,10 @@ private:
             /* Le joueur décide de jouer papier */
         void jouerPierre();
             /* Le joueur décide de jouer pierre */
-        void jouerPartie(UnCoup coup);
+        void jouerPartie(Chifoumi::UnCoup coup);
             /* Permet de déterminer le gagnant et met à jour l'interface
               à partir d'un coup (coup) donné par le joueur */
-        void informations();
+        void aProposDe();
             /* Permet l'affichage "A propos de..." pour l'utilisateur */
 
 };

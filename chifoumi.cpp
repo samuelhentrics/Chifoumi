@@ -6,6 +6,7 @@
  **************************************************************/
 #include "chifoumi.h"
 #include "ui_chifoumi.h"
+#include <QMessageBox>
 
 #include <cstdlib>
 #include <ctime>
@@ -28,7 +29,7 @@ Chifoumi::Chifoumi(QWidget *parent)
 
     connect(ui->bNouvellePartie, SIGNAL(clicked()), this, SLOT(lancerPartie()));
     connect(ui->actionQuitter, SIGNAL(triggered()), QCoreApplication::instance(), SLOT(quit()), Qt::QueuedConnection);
-    connect(ui->actionA_propos_de, SIGNAL(triggered()), this, SLOT(informations()));
+    connect(ui->actionA_propos_de, SIGNAL(triggered()), this, SLOT(aProposDe()));
 }
 
 Chifoumi::~Chifoumi()
@@ -132,8 +133,13 @@ void Chifoumi::jouerPartie(UnCoup coup){
 
 }
 
-void Chifoumi::informations(){
-    ui->lScoreJoueur->setText("TEST");
+void Chifoumi::aProposDe(){
+    QMessageBox* mBoxInfo = new QMessageBox();
+    mBoxInfo->information(this,
+                      "A propos de cette application",
+                      "Version 3.0.\n"
+                      "Dernière modification le : 02/05/2022.\n"
+                      "Crée par Samuel HENTRICS LOISTINE, Cédric ETCHEPARE, Ahmed FAKHFAKH");
 }
 
 Chifoumi::UnCoup Chifoumi::getCoupJoueur() {
@@ -191,8 +197,6 @@ int randMinMax(int min, int max){
 Chifoumi::UnCoup Chifoumi::genererUnCoup()
 {
     UnCoup valeurGeneree;   // valeur à retourner
-
-    valeurGeneree = rien;
     int valeurAleatoire;   // valeur aléatoire retourner par la machine
     valeurGeneree=rien;
     valeurAleatoire = randMinMax(1,4);

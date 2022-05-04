@@ -2,7 +2,7 @@
  * Name:      chifoumiMain.cpp
  * Author:    Samuel HENTRICS LOISTINE, Ahmed FAKHFAKH, Cédric ETCHEPARE
  * Created:   2022-04-14
- * Description : Chifourmi v0
+ * Description : Chifoumi v0
  **************************************************************/
 #include "chifoumi.h"
 

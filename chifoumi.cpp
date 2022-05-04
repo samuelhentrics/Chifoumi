@@ -1,12 +1,10 @@
 /***************************************************************
  * Name:      chifoumiMain.cpp
  * Author:    Samuel HENTRICS LOISTINE, Ahmed FAKHFAKH, Cédric ETCHEPARE
- * Created:   2022-04-28
- * Description : Chifourmi v1
+ * Created:   2022-04-14
+ * Description : Chifourmi v0
  **************************************************************/
 #include "chifoumi.h"
-#include "ui_chifoumi.h"
-#include <QMessageBox>
 
 #include <cstdlib>
 #include <ctime>
@@ -14,10 +12,7 @@
 
 ///* ---- PARTIE MODèLE ---------------------------
 
-
-Chifoumi::Chifoumi(QWidget *parent)
-    : QMainWindow(parent)
-    , ui(new Ui::Chifoumi)
+Chifoumi::Chifoumi()
 {
     //ctor
     // partie modèle
@@ -25,122 +20,15 @@ Chifoumi::Chifoumi(QWidget *parent)
     scoreMachine=0;
     coupJoueur=rien;
     coupMachine=rien;
-    ui->setupUi(this);
 
-    connect(ui->bNouvellePartie, SIGNAL(clicked()), this, SLOT(lancerPartie()));
-    connect(ui->actionQuitter, SIGNAL(triggered()), QCoreApplication::instance(), SLOT(quit()), Qt::QueuedConnection);
-    connect(ui->actionA_propos_de, SIGNAL(triggered()), this, SLOT(aProposDe()));
 }
 
 Chifoumi::~Chifoumi()
 {
-    delete ui;
+    //dtor
 }
 
-void Chifoumi::lancerPartie(){
-    // Deconnexion des événements s'ils existent
-    disconnect(ui->bCiseau, SIGNAL(pressed()), this, SLOT(jouerCiseau()));
-    disconnect(ui->bPapier, SIGNAL(pressed()), this, SLOT(jouerPapier()));
-    disconnect(ui->bPierre, SIGNAL(pressed()), this, SLOT(jouerPierre()));
-
-    // Activer les boutons pierre, papier, ciseau
-    ui->bPierre->setEnabled(true);
-    ui->bPapier->setEnabled(true);
-    ui->bCiseau->setEnabled(true);
-
-    // Texte du joueur en bleu
-    ui->lJoueur->setStyleSheet("color: blue");
-    ui->lScoreJoueur->setStyleSheet("color: blue");
-
-    // Réinitialisation des scores
-    initScores();
-    initCoups();
-
-    // Reinitialiser les images des coups des joueurs et leurs scores
-    ui->lCoupJoueur->setPixmap(QPixmap(":/res/images/rien_115.png"));
-    ui->lCoupMachine->setPixmap(QPixmap(":/res/images/rien_115.png"));
-    ui->lScoreJoueur->setText(QString::number(scoreJoueur));
-    ui->lScoreMachine->setText(QString::number(scoreMachine));
-
-    // Activation des connexions pour les événements afin de jouer
-    connect(ui->bCiseau, SIGNAL(pressed()), this, SLOT(jouerCiseau()));
-    connect(ui->bPapier, SIGNAL(pressed()), this, SLOT(jouerPapier()));
-    connect(ui->bPierre, SIGNAL(pressed()), this, SLOT(jouerPierre()));
-}
-
-void Chifoumi::jouerCiseau(){
-    emit jouerPartie(ciseau);
-}
-
-void Chifoumi::jouerPapier(){
-    emit jouerPartie(papier);
-}
-
-void Chifoumi::jouerPierre(){
-    emit jouerPartie(pierre);
-}
-
-void Chifoumi::jouerPartie(UnCoup coup){
-    // Déterminer jeu
-    coupJoueur=coup;
-    coupMachine=genererUnCoup();
-
-    // Determiner gagnant
-    majScores(determinerGagnant());
-
-    // Mise à jour de l'interface
-
-    // -- Mise à jour de l'interface pour le coup du joueur
-    switch (coupJoueur) {
-    case pierre:
-        ui->lCoupJoueur->setPixmap(QPixmap(":/res/images/pierre_115.png"));
-        break;
-
-    case papier:
-        ui->lCoupJoueur->setPixmap(QPixmap(":/res/images/papier_115.png"));
-        break;
-
-    case ciseau:
-        ui->lCoupJoueur->setPixmap(QPixmap(":/res/images/ciseau_115.png"));
-        break;
-
-    default:break;
-
-    }
-
-    // -- Mise à jour de l'interface pour le coup de la machine
-    switch (coupMachine) {
-    case pierre:
-        ui->lCoupMachine->setPixmap(QPixmap(":/res/images/pierre_115.png"));
-        break;
-
-    case papier:
-        ui->lCoupMachine->setPixmap(QPixmap(":/res/images/papier_115.png"));
-        break;
-
-    case ciseau:
-        ui->lCoupMachine->setPixmap(QPixmap(":/res/images/ciseau_115.png"));
-        break;
-
-    default:break;
-
-    }
-
-    // -- Mise à jour de l'interface pour les scores du joueur et de la machine
-    ui->lScoreJoueur->setText(QString::number(scoreJoueur));
-    ui->lScoreMachine->setText(QString::number(scoreMachine));
-
-
-}
-
-void Chifoumi::aProposDe(){
-    QMessageBox* mBoxInfo = new QMessageBox();
-    mBoxInfo->setWindowTitle("A propos de cette application");
-    mBoxInfo->setText("Version 3.0.\n"
-                      "Dernière modification le : 04/05/2022.\n"
-                      "Crée par Samuel HENTRICS LOISTINE, Cédric ETCHEPARE, Ahmed FAKHFAKH");
-    mBoxInfo->show();
-}
+/// Getters
 
 Chifoumi::UnCoup Chifoumi::getCoupJoueur() {
     return coupJoueur;
@@ -197,6 +85,8 @@ int randMinMax(int min, int max){
 Chifoumi::UnCoup Chifoumi::genererUnCoup()
 {
     UnCoup valeurGeneree;   // valeur à retourner
+
+    valeurGeneree = rien;
     int valeurAleatoire;   // valeur aléatoire retourner par la machine
     valeurGeneree=rien;
     valeurAleatoire = randMinMax(1,4);

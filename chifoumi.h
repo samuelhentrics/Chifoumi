@@ -1,104 +1,82 @@
+/***************************************************************
+ * Name:      chifoumiMain.h
+ * Author:    P.Dagorret ()
+ * Created:   2021-05-10
+ * Description : classe mÈtier (= ModËle) Chifoumi-v1
+ **************************************************************/
 #ifndef CHIFOUMI_H
 #define CHIFOUMI_H
+#include <iostream>
 
-#include <QMainWindow>
+using namespace std;
 
-QT_BEGIN_NAMESPACE
-namespace Ui { class Chifoumi; }
-QT_END_NAMESPACE
-
-class Chifoumi : public QMainWindow
+class Chifoumi
 {
-    Q_OBJECT    
+    ///* ---- PARTIE MODËLE ---------------------------
 
-public:
-    Chifoumi(QWidget *parent = nullptr);
-    ~Chifoumi();
-
-private:
-    Ui::Chifoumi *ui;
-
-    ///* ---- PARTIE MOD√®LE ---------------------------
-
-        ///* Une d√©finition de type √©num√©r√©
+        ///* Une dÈfinition de type ÈnumÈrÈ
     public:
         enum UnCoup {pierre, papier, ciseau, rien};
 
-        ///* M√©thodes du Mod√®le
+        ///* MÈthodes du ModËle
+    public:
+        Chifoumi();
+        virtual ~Chifoumi();
 
         // Getters
         UnCoup getCoupJoueur();
-            /* retourne le dernier coup jou√© par le joueur */
+            /* retourne le dernier coup jouÈ par le joueur */
         UnCoup getCoupMachine();
-            /* retourne le dernier coup jou√© par le joueur */
+            /* retourne le dernier coup jouÈ par le joueur */
         unsigned int getScoreJoueur();
             /* retourne le score du joueur */
         unsigned int getScoreMachine();
             /* retourne le score de la machine */
         char determinerGagnant();
-            /* d√©termine le gagnant 'J' pour joueur, 'M' pour machine, 'N' pour match nul
-               en fonction du dernier coup jou√© par chacun d'eux */
+            /* dÈtermine le gagnant 'J' pour joueur, 'M' pour machine, 'N' pour match nul
+               en fonction du dernier coup jouÈ par chacun d'eux */
 
-         ///* M√©thodes utilitaires du Mod√®le
+         ///* MÈthodes utilitaires du ModËle
     private :
         UnCoup genererUnCoup();
-    /* retourne une valeur al√©atoire = pierre, papier ou ciseau.
-       Utilis√©e pour faire jouer la machine */
+    /* retourne une valeur alÈatoire = pierre, papier ou ciseau.
+       UtilisÈe pour faire jouer la machine */
 
         // Setters
     public:
         void setCoupJoueur(UnCoup p_coup);
             /* initialise l'attribut coupJoueur avec la valeur
-               du param√®tre p_coup */
+               du paramËtre p_coup */
         void setCoupMachine(UnCoup p_coup);
              /* initialise l'attribut coupmachine avec la valeur
-               du param√®tre p_coup */
+               du paramËtre p_coup */
         void setScoreJoueur(unsigned int p_score);
             /* initialise l'attribut scoreJoueur avec la valeur
-               du param√®tre p_score */
+               du paramËtre p_score */
         void setScoreMachine(unsigned int p_score);
              /* initialise l'attribut coupMachine avec la valeur
-               du param√®tre p_score */
+               du paramËtre p_score */
 
         // Autres modificateurs
          void majScores(char p_gagnant);
-            /* Mise √† jour des scores en fonction des r√®gles de gestion actuelles :
-                - 1 point pour le gagnant lorsqu'il y a un gagnant
-                - 0 point en cas de match nul
-            */
+			/* Mise ‡ jour des scores en fonction des rËgles de gestion actuelles :
+				- 1 point pour le gagnant lorsqu'il y a un gagnant
+				- 0 point en cas de match nul
+			*/
         void initScores();
-            /* initialise √† 0 les attributs scoreJoueur et scoreMachine
+            /* initialise ‡ 0 les attributs scoreJoueur et scoreMachine
                NON indispensable */
         void initCoups();
-            /* initialise √† rien les attributs coupJoueur et coupMachine
+            /* initialise ‡ rien les attributs coupJoueur et coupMachine
                NON indispensable */
 
 
-         ///* Attributs du Mod√®le
+         ///* Attributs du ModËle
      private:
         unsigned int scoreJoueur;   // score actuel du joueur
         unsigned int scoreMachine;  // score actuel de la Machine
-        UnCoup coupJoueur;          // dernier coup jou√© par le joueur
-        UnCoup coupMachine;         // dernier coup jou√© par la machine
-
-    public slots:
-        void lancerPartie();
-            /* Permet de lancer une partie entre le joueur et la machine
-            */
-        void jouerCiseau();
-            /* Le joueur d√©cide de jouer ciseau */
-        void jouerPapier();
-            /* Le joueur d√©cide de jouer papier */
-        void jouerPierre();
-            /* Le joueur d√©cide de jouer pierre */
-        void jouerPartie(Chifoumi::UnCoup coup);
-            /* Permet de d√©terminer le gagnant et met √† jour l'interface
-              √† partir d'un coup (coup) donn√© par le joueur */
-        void aProposDe();
-            /* Permet l'affichage "A propos de..." pour l'utilisateur */
-
+        UnCoup coupJoueur;          // dernier coup jouÈ par le joueur
+        UnCoup coupMachine;         // dernier coup jouÈ par la machine
 };
-
-
 
 #endif // CHIFOUMI_H

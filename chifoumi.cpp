@@ -135,11 +135,11 @@ void Chifoumi::jouerPartie(UnCoup coup){
 
 void Chifoumi::aProposDe(){
     QMessageBox* mBoxInfo = new QMessageBox();
-    mBoxInfo->information(this,
-                      "A propos de cette application",
-                      "Version 3.0.\n"
+    mBoxInfo->setWindowTitle("A propos de cette application");
+    mBoxInfo->setText("Version 3.0.\n"
                       "Dernière modification le : 02/05/2022.\n"
                       "Crée par Samuel HENTRICS LOISTINE, Cédric ETCHEPARE, Ahmed FAKHFAKH");
+    mBoxInfo->show();
 }
 
 Chifoumi::UnCoup Chifoumi::getCoupJoueur() {

@@ -137,7 +137,7 @@ void Chifoumi::aProposDe(){
     QMessageBox* mBoxInfo = new QMessageBox();
     mBoxInfo->setWindowTitle("A propos de cette application");
     mBoxInfo->setText("Version 3.0.\n"
-                      "Dernière modification le : 02/05/2022.\n"
+                      "Dernière modification le : 04/05/2022.\n"
                       "Crée par Samuel HENTRICS LOISTINE, Cédric ETCHEPARE, Ahmed FAKHFAKH");
     mBoxInfo->show();
 }

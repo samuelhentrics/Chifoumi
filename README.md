@@ -57,7 +57,7 @@
   <img src="images/screenshot.png" width="400px">
 </div>
   
-Ce projet reprend l'idée du jeu Chifoumi. Ce projet a été fait en BUT Informatique au semestre 2 durant la SAE S2.01 - Développement d'une application
+Ce projet reprend l'idée du jeu Chifoumi. Ce projet a été fait en BUT Informatique à l'IUT de Bayonne et du Pays Basque durant le semestre 2 lors de la SAE S2.01 - Développement d'une application
 
 <p align="right">(<a href="#top">Retour en haut</a>)</p>
 

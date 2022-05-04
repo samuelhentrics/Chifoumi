@@ -96,7 +96,6 @@
            <font>
             <family>Arial</family>
             <pointsize>12</pointsize>
-            <weight>50</weight>
             <bold>false</bold>
            </font>
           </property>
@@ -117,7 +116,6 @@
            <font>
             <family>Arial</family>
             <pointsize>12</pointsize>
-            <weight>50</weight>
             <bold>false</bold>
            </font>
           </property>
@@ -149,35 +147,39 @@
          </spacer>
         </item>
         <item>
-         <widget class="QLabel" name="lVersus">
-          <property name="enabled">
-           <bool>true</bool>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>70</width>
-            <height>70</height>
-           </size>
-          </property>
-          <property name="styleSheet">
-           <string notr="true"/>
-          </property>
-          <property name="text">
-           <string/>
-          </property>
-          <property name="pixmap">
-           <pixmap resource="chifoumires.qrc">:/res/images/versus.gif</pixmap>
-          </property>
-          <property name="scaledContents">
-           <bool>true</bool>
-          </property>
-          <property name="alignment">
-           <set>Qt::AlignCenter</set>
-          </property>
-          <property name="margin">
-           <number>0</number>
-          </property>
-         </widget>
+         <layout class="QHBoxLayout" name="horizontalLayout_2">
+          <item>
+           <widget class="QLabel" name="lVersus">
+            <property name="enabled">
+             <bool>true</bool>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>70</width>
+              <height>70</height>
+             </size>
+            </property>
+            <property name="styleSheet">
+             <string notr="true"/>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+            <property name="pixmap">
+             <pixmap resource="chifoumires.qrc">:/res/images/versus.gif</pixmap>
+            </property>
+            <property name="scaledContents">
+             <bool>true</bool>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignCenter</set>
+            </property>
+            <property name="margin">
+             <number>0</number>
+            </property>
+           </widget>
+          </item>
+         </layout>
         </item>
         <item>
          <spacer name="verticalSpacer_3">
@@ -446,7 +448,7 @@
      <x>0</x>
      <y>0</y>
      <width>498</width>
-     <height>21</height>
+     <height>26</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuFichier">

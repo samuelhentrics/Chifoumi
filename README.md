@@ -57,7 +57,7 @@
   <img src="images/screenshot.png" width="400px">
 </div>
   
-Ce projet reprend l'idée du jeu Chifoumi. Ce projet a été fait en BUT Informatique au semestre 2 durant la SAE S2.01 - Développement d'une application
+Ce projet reprend l'idée du jeu Chifoumi. Ce projet a été fait en BUT Informatique à l'IUT de Bayonne et du Pays Basque durant le semestre 2 lors de la SAE S2.01 - Développement d'une application
 
 <p align="right">(<a href="#top">Retour en haut</a>)</p>
 
@@ -98,7 +98,7 @@ Pour plus d'informations, se référer au docs
 - [x] v0 Sources C++ de la classe Chifoumi dans un projet Non Qt
 - [x] v1 Version décrite dans le paragraphe §1 précédent. La barre de menus est inactive.
 - [ ] v2 Le code source est structuré selon le modèle MVC. Amélioration de l’organisation du code
-- [ ] v3 Le menu Fichier >> Quitter permet d’arrêter l’application. Le menu Aide >> A propos de… ouvre une Boîte de Message donnant des informations
+- [x] v3 Le menu Fichier >> Quitter permet d’arrêter l’application. Le menu Aide >> A propos de… ouvre une Boîte de Message donnant des informations
 - [ ] v4 Le jeu se joue en X points, 5 par défaut.
 - [ ] v5 Le jeu se joue en temps limité, 30 secondes par défaut.
 - [ ] v6 L’utilisateur peut modifier différents paramètres avant de commencer la partie : son nom, le nombre max. de points, le temps max. à jouer

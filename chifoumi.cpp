@@ -2,10 +2,11 @@
  * Name:      chifoumiMain.cpp
  * Author:    Samuel HENTRICS LOISTINE, Ahmed FAKHFAKH, Cédric ETCHEPARE
  * Created:   2022-04-28
- * Description : Chifoumi v1
+ * Description : Chifoumi v3
  **************************************************************/
 #include "chifoumi.h"
 #include "ui_chifoumi.h"
+#include <QMessageBox>
 
 #include <cstdlib>
 #include <ctime>
@@ -27,6 +28,8 @@ Chifoumi::Chifoumi(QWidget *parent)
     ui->setupUi(this);
 
     connect(ui->bNouvellePartie, SIGNAL(clicked()), this, SLOT(lancerPartie()));
+    connect(ui->actionQuitter, SIGNAL(triggered()), QCoreApplication::instance(), SLOT(quit()), Qt::QueuedConnection);
+    connect(ui->actionA_propos_de, SIGNAL(triggered()), this, SLOT(aProposDe()));
 }
 
 Chifoumi::~Chifoumi()
@@ -130,6 +133,14 @@ void Chifoumi::jouerPartie(UnCoup coup){
 
 }
 
+void Chifoumi::aProposDe(){
+    QMessageBox* mBoxInfo = new QMessageBox();
+    mBoxInfo->setWindowTitle("A propos de cette application");
+    mBoxInfo->setText("Version 3.0.\n"
+                      "Dernière modification le : 04/05/2022.\n"
+                      "Crée par Samuel HENTRICS LOISTINE, Cédric ETCHEPARE, Ahmed FAKHFAKH");
+    mBoxInfo->show();
+}
 
 Chifoumi::UnCoup Chifoumi::getCoupJoueur() {
     return coupJoueur;
@@ -186,8 +197,6 @@ int randMinMax(int min, int max){
 Chifoumi::UnCoup Chifoumi::genererUnCoup()
 {
     UnCoup valeurGeneree;   // valeur à retourner
-
-    valeurGeneree = rien;
     int valeurAleatoire;   // valeur aléatoire retourner par la machine
     valeurGeneree=rien;
     valeurAleatoire = randMinMax(1,4);

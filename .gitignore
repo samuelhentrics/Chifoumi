@@ -9,6 +9,7 @@
 *.so.*
 *.dll
 *.dylib
+*.cpp.*
 
 # Qt-es
 object_script.*.Release
@@ -37,6 +38,7 @@ target_wrapper.*
 
 # QtCreator
 *.autosave
+*.autosave.*
 
 # QtCreator Qml
 *.qmlproject.user

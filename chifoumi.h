@@ -96,6 +96,8 @@ private:
               à partir d'un coup (coup) donné par le joueur */
         void aProposDe();
             /* Permet l'affichage "A propos de..." pour l'utilisateur */
+        void finirPartie();
+            /* Permet de finir la partie lorsque un joueur a atteint 5 points */
 
 };
 

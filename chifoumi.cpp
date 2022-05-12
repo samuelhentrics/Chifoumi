@@ -30,6 +30,11 @@ Chifoumi::Chifoumi(QWidget *parent)
     connect(ui->bNouvellePartie, SIGNAL(clicked()), this, SLOT(lancerPartie()));
     connect(ui->actionQuitter, SIGNAL(triggered()), QCoreApplication::instance(), SLOT(quit()), Qt::QueuedConnection);
     connect(ui->actionA_propos_de, SIGNAL(triggered()), this, SLOT(aProposDe()));
+
+    // Activation des connexions pour les événements afin de jouer
+    connect(ui->bCiseau, SIGNAL(pressed()), this, SLOT(jouerCiseau()));
+    connect(ui->bPapier, SIGNAL(pressed()), this, SLOT(jouerPapier()));
+    connect(ui->bPierre, SIGNAL(pressed()), this, SLOT(jouerPierre()));
 }
 
 Chifoumi::~Chifoumi()
@@ -38,11 +43,6 @@ Chifoumi::~Chifoumi()
 }
 
 void Chifoumi::lancerPartie(){
-    // Deconnexion des événements s'ils existent
-    disconnect(ui->bCiseau, SIGNAL(pressed()), this, SLOT(jouerCiseau()));
-    disconnect(ui->bPapier, SIGNAL(pressed()), this, SLOT(jouerPapier()));
-    disconnect(ui->bPierre, SIGNAL(pressed()), this, SLOT(jouerPierre()));
-
     // Activer les boutons pierre, papier, ciseau
     ui->bPierre->setEnabled(true);
     ui->bPapier->setEnabled(true);
@@ -61,11 +61,39 @@ void Chifoumi::lancerPartie(){
     ui->lCoupMachine->setPixmap(QPixmap(":/res/images/rien_115.png"));
     ui->lScoreJoueur->setText(QString::number(scoreJoueur));
     ui->lScoreMachine->setText(QString::number(scoreMachine));
+}
 
-    // Activation des connexions pour les événements afin de jouer
-    connect(ui->bCiseau, SIGNAL(pressed()), this, SLOT(jouerCiseau()));
-    connect(ui->bPapier, SIGNAL(pressed()), this, SLOT(jouerPapier()));
-    connect(ui->bPierre, SIGNAL(pressed()), this, SLOT(jouerPierre()));
+
+void Chifoumi::finirPartie()
+{
+    //On vérifie si le joueur à gagné.
+    if (getScoreJoueur()==5)
+    {
+        // Désctiver les boutons pierre, papier, ciseau
+        ui->bPierre->setEnabled(false);
+        ui->bPapier->setEnabled(false);
+        ui->bCiseau->setEnabled(false);
+        // Afficher
+        QMessageBox* mBox;
+        mBox = new QMessageBox();
+        mBox->information(this,
+                          tr("Fin de partie"),
+                         "Bravo le joueur ! Vous gagné en 5 points.");
+    }
+    //On vérifie si la machine à gagnée.
+    if (getScoreMachine()==5)
+    {
+        // Désctiver les boutons pierre, papier, ciseau
+        ui->bPierre->setEnabled(false);
+        ui->bPapier->setEnabled(false);
+        ui->bCiseau->setEnabled(false);
+        // Afficher
+        QMessageBox* mBox;
+        mBox = new QMessageBox();
+        mBox->information(this,
+                          tr("Fin de partie"),
+                         "Bravo la machine ! Vous gagné en 5 points.");
+    }
 }
 
 void Chifoumi::jouerCiseau(){
@@ -129,6 +157,8 @@ void Chifoumi::jouerPartie(UnCoup coup){
     // -- Mise à jour de l'interface pour les scores du joueur et de la machine
     ui->lScoreJoueur->setText(QString::number(scoreJoueur));
     ui->lScoreMachine->setText(QString::number(scoreMachine));
+
+    emit finirPartie();
 
 
 }

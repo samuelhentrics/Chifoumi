@@ -73,7 +73,7 @@ void Chifoumi::finirPartie()
         ui->bPierre->setEnabled(false);
         ui->bPapier->setEnabled(false);
         ui->bCiseau->setEnabled(false);
-        // Afficher
+        // Afficher le message de fin du partie
         QMessageBox* mBox;
         mBox = new QMessageBox();
         mBox->information(this,
@@ -87,7 +87,7 @@ void Chifoumi::finirPartie()
         ui->bPierre->setEnabled(false);
         ui->bPapier->setEnabled(false);
         ui->bCiseau->setEnabled(false);
-        // Afficher
+        // Afficher le message de fin du partie
         QMessageBox* mBox;
         mBox = new QMessageBox();
         mBox->information(this,

@@ -97,7 +97,7 @@ void Chifoumi::finirPartie()
                          "Bravo la machine ! Vous gagné en 5 points.");
     }
     // On vérifie si le timer est à zéro
-    else if (getScoreMachine()==5)
+    else if (tempsRestant==0)
     {
         desactiver();
         // Afficher le message de fin du partie

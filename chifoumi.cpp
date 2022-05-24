@@ -103,13 +103,19 @@ void Chifoumi::finirPartie()
         // Afficher le message de fin du partie
         QString message;
         if (getScoreJoueur()>getScoreMachine()){
-            message="Helas chers joueurs, temps de jeu fini ! Vous terminez toutefois mieux, avec"+QString::number(getScoreJoueur())+" points.";
+            message="Helas chers joueurs, temps de jeu fini ! Vous terminez toutefois mieux, avec "+QString::number(getScoreJoueur())+" points.";
+        }
+        else if (getScoreMachine()>getScoreJoueur()){
+            message="Helas chers joueurs, temps de jeu fini ! La machine termine toutefois mieux, avec "+QString::number(getScoreMachine())+" points.";
+        }
+        else{
+            message="Helas chers joueurs, temps de jeu fini ! Vous terminez avec une égalité";
         }
         QMessageBox* mBox;
         mBox = new QMessageBox();
         mBox->information(this,
                           tr("Fin de partie"),
-                         "Bravo la machine ! Vous gagné en 5 points.");
+                         message);
     }
 
 }

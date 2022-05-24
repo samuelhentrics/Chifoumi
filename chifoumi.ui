@@ -96,6 +96,7 @@
            <font>
             <family>Arial</family>
             <pointsize>12</pointsize>
+            <weight>50</weight>
             <bold>false</bold>
            </font>
           </property>
@@ -116,6 +117,7 @@
            <font>
             <family>Arial</family>
             <pointsize>12</pointsize>
+            <weight>50</weight>
             <bold>false</bold>
            </font>
           </property>
@@ -147,7 +149,7 @@
          </spacer>
         </item>
         <item>
-         <layout class="QHBoxLayout" name="horizontalLayout_2">
+         <layout class="QHBoxLayout" name="lImageVersus">
           <item>
            <widget class="QLabel" name="lVersus">
             <property name="enabled">
@@ -196,6 +198,32 @@
            </size>
           </property>
          </spacer>
+        </item>
+        <item>
+         <layout class="QHBoxLayout" name="horizontalTimeLayout">
+          <item>
+           <widget class="QLabel" name="lTemps">
+            <property name="font">
+             <font>
+              <pointsize>10</pointsize>
+             </font>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">color:grey</string>
+            </property>
+            <property name="text">
+             <string>Tps restant(s):</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="label">
+            <property name="text">
+             <string>30</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
         </item>
        </layout>
       </item>
@@ -426,6 +454,16 @@
        </spacer>
       </item>
       <item>
+       <widget class="QPushButton" name="pushButton">
+        <property name="enabled">
+         <bool>false</bool>
+        </property>
+        <property name="text">
+         <string>Pause</string>
+        </property>
+       </widget>
+      </item>
+      <item>
        <widget class="QPushButton" name="bNouvellePartie">
         <property name="text">
          <string>Nouvelle partie</string>
@@ -448,7 +486,7 @@
      <x>0</x>
      <y>0</y>
      <width>498</width>
-     <height>26</height>
+     <height>21</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuFichier">

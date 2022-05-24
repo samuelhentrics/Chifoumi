@@ -32,6 +32,7 @@ Chifoumi::Chifoumi(QWidget *parent)
     connect(ui->bNouvellePartie, SIGNAL(clicked()), this, SLOT(lancerPartie()));
     connect(ui->actionQuitter, SIGNAL(triggered()), QCoreApplication::instance(), SLOT(quit()), Qt::QueuedConnection);
     connect(ui->actionA_propos_de, SIGNAL(triggered()), this, SLOT(aProposDe()));
+    connect(ui->bPause, SIGNAL(clicked()), this, SLOT(majPause()));
 
     // Activation des connexions pour les événements afin de jouer
     connect(ui->bCiseau, SIGNAL(pressed()), this, SLOT(jouerCiseau()));
@@ -50,6 +51,7 @@ void Chifoumi::lancerPartie(){
     ui->bPierre->setEnabled(true);
     ui->bPapier->setEnabled(true);
     ui->bCiseau->setEnabled(true);
+    ui->bPause->setEnabled(true);
 
     // Texte du joueur en bleu
     ui->lJoueur->setStyleSheet("color: blue");
@@ -67,7 +69,7 @@ void Chifoumi::lancerPartie(){
 
     // Activation du timer
     tempsRestant=tempsPartie;
-    ui->lTempsRestants->setText(QString::number(tempsRestant));
+    ui->lTempsRestant->setText(QString::number(tempsRestant));
     timer->start(1000);
 }
 
@@ -83,7 +85,7 @@ void Chifoumi::finirPartie()
         mBox = new QMessageBox();
         mBox->information(this,
                           tr("Fin de partie"),
-                         "Bravo le joueur ! Vous gagné en 5 points.");
+                         "Bravo le joueur ! Vous gagnez en 5 points.");
     }
     //On vérifie si la machine à gagnée.
     else if (getScoreMachine()==5)
@@ -94,7 +96,7 @@ void Chifoumi::finirPartie()
         mBox = new QMessageBox();
         mBox->information(this,
                           tr("Fin de partie"),
-                         "Bravo la machine ! Vous gagné en 5 points.");
+                         "Bravo la machine ! Vous gagnez en 5 points.");
     }
     // On vérifie si le timer est à zéro
     else if (tempsRestant==0)
@@ -121,7 +123,7 @@ void Chifoumi::finirPartie()
 }
 
 void Chifoumi::desactiver(){
-    // Désctiver les boutons pierre, papier, ciseau
+    // Désactiver les boutons pierre, papier, ciseau
     ui->bPierre->setEnabled(false);
     ui->bPapier->setEnabled(false);
     ui->bCiseau->setEnabled(false);
@@ -135,9 +137,33 @@ void Chifoumi::desactiver(){
 
 void Chifoumi::majTemps(){
     tempsRestant-=1;
-    ui->lTempsRestants->setText(QString::number(tempsRestant));
+    ui->lTempsRestant->setText(QString::number(tempsRestant));
     if (tempsRestant==0){
         emit finirPartie();
+    }
+}
+
+void Chifoumi::majPause(){
+    // Met le jeu en pause si le timer est actif
+    if (timer->isActive()){
+        // Désactive le choix des coups ainsi que la possibilité de lancer une nouvelle partie
+        ui->bPierre->setEnabled(false);
+        ui->bPapier->setEnabled(false);
+        ui->bCiseau->setEnabled(false);
+        ui->bNouvellePartie->setEnabled(false);
+        timer->stop(); // Arrete le timer
+        ui->bPause->setText("Reprise jeu"); // Renomme le bouton "Pause" en "Reprise jeu"
+    }
+    // Si le timer est inactif, le jeu se reprend
+    else{
+        // Réactive le choix des coups ainsi que la possibilité de lancer une nouvelle partie
+        ui->bPierre->setEnabled(true);
+        ui->bPapier->setEnabled(true);
+        ui->bCiseau->setEnabled(true);
+        ui->bNouvellePartie->setEnabled(true);
+        timer->start(); // Relance le timer
+        ui->bPause->setText("Pause");  // Renomme le bouton "Reprise jeu" en "Pause"
+
     }
 }
 
@@ -162,7 +188,6 @@ void Chifoumi::jouerPartie(UnCoup coup){
     majScores(determinerGagnant());
 
     // Mise à jour de l'interface
-
     // -- Mise à jour de l'interface pour le coup du joueur
     switch (coupJoueur) {
     case pierre:

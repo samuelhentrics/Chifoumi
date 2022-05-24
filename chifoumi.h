@@ -108,6 +108,9 @@ private:
         void majTemps();
             /* Met à jour le temps restant lors d'une partie et peut arreter la partie
             si le compteur est à zero*/
+        void majPause();
+            /* Met le jeu en pause lorsque l'utilisateur demande à mettre le jeu en pause.
+             * Ou alors reprend la partie si le timer est inactif*/
 
 };
 

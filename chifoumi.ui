@@ -200,7 +200,7 @@
          </spacer>
         </item>
         <item>
-         <layout class="QHBoxLayout" name="horizontalTimeLayout">
+         <layout class="QHBoxLayout" name="hTimeLayout">
           <item>
            <widget class="QLabel" name="lTemps">
             <property name="font">
@@ -217,7 +217,7 @@
            </widget>
           </item>
           <item>
-           <widget class="QLabel" name="lTempsRestants">
+           <widget class="QLabel" name="lTempsRestant">
             <property name="enabled">
              <bool>true</bool>
             </property>

@@ -2,6 +2,7 @@
 #define CHIFOUMI_H
 
 #include <QMainWindow>
+#include <QTimer>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class Chifoumi; }
@@ -73,6 +74,9 @@ private:
             /* initialise à rien les attributs coupJoueur et coupMachine
                NON indispensable */
 
+        void desactiver();
+            /* permet de désactiver les boutons, le timer
+             */
 
          ///* Attributs du Modèle
      private:
@@ -80,6 +84,9 @@ private:
         unsigned int scoreMachine;  // score actuel de la Machine
         UnCoup coupJoueur;          // dernier coup joué par le joueur
         UnCoup coupMachine;         // dernier coup joué par la machine
+        QTimer *timer = new QTimer(this); // timer qui s'enclenche toutes les 1 secondes
+        unsigned int tempsPartie; // Temps par défaut avant la fin d'une partie
+        unsigned int tempsRestant; // Temps restant pour la partie
 
     public slots:
         void lancerPartie();
@@ -98,6 +105,9 @@ private:
             /* Permet l'affichage "A propos de..." pour l'utilisateur */
         void finirPartie();
             /* Permet de finir la partie lorsque un joueur a atteint 5 points */
+        void majTemps();
+            /* Met à jour le temps restant lors d'une partie et peut arreter la partie
+            si le compteur est à zero*/
 
 };
 

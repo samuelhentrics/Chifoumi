@@ -25,8 +25,10 @@ Chifoumi::Chifoumi(QWidget *parent)
     scoreMachine=0;
     coupJoueur=rien;
     coupMachine=rien;
+    tempsPartie=30;
     ui->setupUi(this);
 
+    // Activation des connexions pour les boutons
     connect(ui->bNouvellePartie, SIGNAL(clicked()), this, SLOT(lancerPartie()));
     connect(ui->actionQuitter, SIGNAL(triggered()), QCoreApplication::instance(), SLOT(quit()), Qt::QueuedConnection);
     connect(ui->actionA_propos_de, SIGNAL(triggered()), this, SLOT(aProposDe()));
@@ -35,6 +37,7 @@ Chifoumi::Chifoumi(QWidget *parent)
     connect(ui->bCiseau, SIGNAL(pressed()), this, SLOT(jouerCiseau()));
     connect(ui->bPapier, SIGNAL(pressed()), this, SLOT(jouerPapier()));
     connect(ui->bPierre, SIGNAL(pressed()), this, SLOT(jouerPierre()));
+    connect(timer, SIGNAL(timeout()), this, SLOT(majTemps()));
 }
 
 Chifoumi::~Chifoumi()
@@ -61,6 +64,11 @@ void Chifoumi::lancerPartie(){
     ui->lCoupMachine->setPixmap(QPixmap(":/res/images/rien_115.png"));
     ui->lScoreJoueur->setText(QString::number(scoreJoueur));
     ui->lScoreMachine->setText(QString::number(scoreMachine));
+
+    // Activation du timer
+    tempsRestant=tempsPartie;
+    ui->lTempsRestants->setText(QString::number(tempsRestant));
+    timer->start(1000);
 }
 
 
@@ -69,10 +77,7 @@ void Chifoumi::finirPartie()
     //On vérifie si le joueur à gagné.
     if (getScoreJoueur()==5)
     {
-        // Désctiver les boutons pierre, papier, ciseau
-        ui->bPierre->setEnabled(false);
-        ui->bPapier->setEnabled(false);
-        ui->bCiseau->setEnabled(false);
+        desactiver();
         // Afficher le message de fin du partie
         QMessageBox* mBox;
         mBox = new QMessageBox();
@@ -81,18 +86,52 @@ void Chifoumi::finirPartie()
                          "Bravo le joueur ! Vous gagné en 5 points.");
     }
     //On vérifie si la machine à gagnée.
-    if (getScoreMachine()==5)
+    else if (getScoreMachine()==5)
     {
-        // Désctiver les boutons pierre, papier, ciseau
-        ui->bPierre->setEnabled(false);
-        ui->bPapier->setEnabled(false);
-        ui->bCiseau->setEnabled(false);
+        desactiver();
         // Afficher le message de fin du partie
         QMessageBox* mBox;
         mBox = new QMessageBox();
         mBox->information(this,
                           tr("Fin de partie"),
                          "Bravo la machine ! Vous gagné en 5 points.");
+    }
+    // On vérifie si le timer est à zéro
+    else if (getScoreMachine()==5)
+    {
+        desactiver();
+        // Afficher le message de fin du partie
+        QString message;
+        if (getScoreJoueur()>getScoreMachine()){
+            message="Helas chers joueurs, temps de jeu fini ! Vous terminez toutefois mieux, avec"+QString::number(getScoreJoueur())+" points.";
+        }
+        QMessageBox* mBox;
+        mBox = new QMessageBox();
+        mBox->information(this,
+                          tr("Fin de partie"),
+                         "Bravo la machine ! Vous gagné en 5 points.");
+    }
+
+}
+
+void Chifoumi::desactiver(){
+    // Désctiver les boutons pierre, papier, ciseau
+    ui->bPierre->setEnabled(false);
+    ui->bPapier->setEnabled(false);
+    ui->bCiseau->setEnabled(false);
+
+    // Désactiver le timer
+    timer->stop();
+    ui->bPause->setText("Pause");
+    ui->bPause->setEnabled(false);
+
+}
+
+void Chifoumi::majTemps(){
+    tempsRestant-=1;
+    ui->lTempsRestants->setText(QString::number(tempsRestant));
+    if (tempsRestant==0){
+        emit finirPartie();
     }
 }
 
@@ -166,8 +205,8 @@ void Chifoumi::jouerPartie(UnCoup coup){
 void Chifoumi::aProposDe(){
     QMessageBox* mBoxInfo = new QMessageBox();
     mBoxInfo->setWindowTitle("A propos de cette application");
-    mBoxInfo->setText("Version 3.0.\n"
-                      "Dernière modification le : 04/05/2022.\n"
+    mBoxInfo->setText("Version 5.0.\n"
+                      "Dernière modification le : 24/05/2022.\n"
                       "Crée par Samuel HENTRICS LOISTINE, Cédric ETCHEPARE, Ahmed FAKHFAKH");
     mBoxInfo->show();
 }

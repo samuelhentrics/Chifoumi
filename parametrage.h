@@ -4,19 +4,22 @@
 #include <QDialog>
 
 namespace Ui {
-class parametrage;
+class Parametrage;
 }
 
-class parametrage : public QDialog
+class Parametrage : public QDialog
 {
     Q_OBJECT
 
 public:
-    explicit parametrage(QWidget *parent = nullptr);
-    ~parametrage();
+    explicit Parametrage(QWidget *parent = nullptr);
+    ~Parametrage();
+    QString getNom();
+    unsigned int getPoints();
+    unsigned int getTemps();
 
 private:
-    Ui::parametrage *ui;
+    Ui::Parametrage *ui;
 };
 
 #endif // PARAMETRAGE_H

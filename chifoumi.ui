@@ -96,7 +96,6 @@
            <font>
             <family>Arial</family>
             <pointsize>12</pointsize>
-            <weight>50</weight>
             <bold>false</bold>
            </font>
           </property>
@@ -117,7 +116,6 @@
            <font>
             <family>Arial</family>
             <pointsize>12</pointsize>
-            <weight>50</weight>
             <bold>false</bold>
            </font>
           </property>
@@ -497,13 +495,14 @@
      <x>0</x>
      <y>0</y>
      <width>498</width>
-     <height>21</height>
+     <height>26</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuFichier">
     <property name="title">
      <string>Fichier</string>
     </property>
+    <addaction name="actionParam_trage"/>
     <addaction name="actionQuitter"/>
    </widget>
    <widget class="QMenu" name="menuAide">
@@ -530,6 +529,11 @@
    </property>
    <property name="shortcut">
     <string>F1</string>
+   </property>
+  </action>
+  <action name="actionParam_trage">
+   <property name="text">
+    <string>Paramétrage</string>
    </property>
   </action>
  </widget>

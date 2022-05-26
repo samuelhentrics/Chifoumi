@@ -1,14 +1,14 @@
 #include "parametrage.h"
 #include "ui_parametrage.h"
 
-parametrage::parametrage(QWidget *parent) :
+Parametrage::Parametrage(QWidget *parent) :
     QDialog(parent),
-    ui(new Ui::parametrage)
+    ui(new Ui::Parametrage)
 {
     ui->setupUi(this);
 }
 
-parametrage::~parametrage()
+Parametrage::~Parametrage()
 {
     delete ui;
 }

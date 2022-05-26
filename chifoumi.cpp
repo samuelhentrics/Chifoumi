@@ -32,6 +32,7 @@ Chifoumi::Chifoumi(QWidget *parent)
     connect(ui->bNouvellePartie, SIGNAL(clicked()), this, SLOT(lancerPartie()));
     connect(ui->actionQuitter, SIGNAL(triggered()), QCoreApplication::instance(), SLOT(quit()), Qt::QueuedConnection);
     connect(ui->actionA_propos_de, SIGNAL(triggered()), this, SLOT(aProposDe()));
+    connect(ui->actionParam_trage, SIGNAL(triggered()), this, SLOT(parametrerJeu()));
     connect(ui->bPause, SIGNAL(clicked()), this, SLOT(majPause()));
 
     // Activation des connexions pour les événements afin de jouer
@@ -71,36 +72,43 @@ void Chifoumi::lancerPartie(){
     tempsRestant=tempsPartie;
     ui->lTempsRestant->setText(QString::number(tempsRestant));
     timer->start(1000);
+
+    // Désactivation du paramètrage
+    disconnect(ui->actionParam_trage, SIGNAL(triggered()), this, SLOT(parametrerJeu()));
 }
 
 
 void Chifoumi::finirPartie()
 {
+    QMessageBox* mBox;
+    mBox = new QMessageBox();
+
     //On vérifie si le joueur à gagné.
     if (getScoreJoueur()==5)
     {
+        // On désactive tous les boutons pour jouer
         desactiver();
         // Afficher le message de fin du partie
-        QMessageBox* mBox;
-        mBox = new QMessageBox();
         mBox->information(this,
                           tr("Fin de partie"),
                          "Bravo le joueur ! Vous gagnez en 5 points.");
     }
+
     //On vérifie si la machine à gagnée.
     else if (getScoreMachine()==5)
     {
+        // On désactive tous les boutons pour jouer
         desactiver();
         // Afficher le message de fin du partie
-        QMessageBox* mBox;
-        mBox = new QMessageBox();
         mBox->information(this,
                           tr("Fin de partie"),
                          "Bravo la machine ! Vous gagnez en 5 points.");
     }
+
     // On vérifie si le timer est à zéro
     else if (tempsRestant==0)
     {
+        // On désactive tous les boutons pour jouer
         desactiver();
         // Afficher le message de fin du partie
         QString message;
@@ -113,12 +121,11 @@ void Chifoumi::finirPartie()
         else{
             message="Helas chers joueurs, temps de jeu fini ! Vous terminez avec une égalité";
         }
-        QMessageBox* mBox;
-        mBox = new QMessageBox();
         mBox->information(this,
                           tr("Fin de partie"),
                          message);
     }
+
 
 }
 
@@ -133,6 +140,8 @@ void Chifoumi::desactiver(){
     ui->bPause->setText("Pause");
     ui->bPause->setEnabled(false);
 
+    // On réactive la possibilité de paramètrer le jeu
+    connect(ui->actionParam_trage, SIGNAL(triggered()), this, SLOT(parametrerJeu()));
 }
 
 void Chifoumi::majTemps(){
@@ -241,6 +250,14 @@ void Chifoumi::aProposDe(){
                       "Crée par Samuel HENTRICS LOISTINE, Cédric ETCHEPARE, Ahmed FAKHFAKH");
     mBoxInfo->show();
 }
+
+void Chifoumi::parametrerJeu(){
+    param->exec();
+}
+
+
+
+
 
 Chifoumi::UnCoup Chifoumi::getCoupJoueur() {
     return coupJoueur;

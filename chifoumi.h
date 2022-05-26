@@ -67,13 +67,15 @@ private:
                 - 1 point pour le gagnant lorsqu'il y a un gagnant
                 - 0 point en cas de match nul
             */
-        void initScores();
-            /* initialise à 0 les attributs scoreJoueur et scoreMachine
-               NON indispensable */
-        void initCoups();
-            /* initialise à rien les attributs coupJoueur et coupMachine
-               NON indispensable */
 
+
+     private:
+         void initScores();
+             /* initialise à 0 les attributs scoreJoueur et scoreMachine
+                NON indispensable */
+         void initCoups();
+             /* initialise à rien les attributs coupJoueur et coupMachine
+                NON indispensable */
         void desactiver();
             /* permet de désactiver les boutons, le timer
              */
@@ -88,7 +90,7 @@ private:
         unsigned int tempsPartie; // Temps par défaut avant la fin d'une partie
         unsigned int tempsRestant; // Temps restant pour la partie
 
-    public slots:
+    private slots:
         void lancerPartie();
             /* Permet de lancer une partie entre le joueur et la machine
             */

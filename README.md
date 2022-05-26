@@ -1,5 +1,9 @@
 <div id="top"></div>
 
+[![Contributors][contributors-shield]][contributors-url]
+[![Forks][forks-shield]][forks-url]
+[![Stargazers][stars-shield]][stars-url]
+[![Issues][issues-shield]][issues-url]
 
 <!-- PROJECT LOGO -->
 <br />
@@ -145,3 +149,13 @@ Lien du projet: [https://github.com/samuelhentrics/chifoumi](https://github.com/
 <p align="right">(<a href="#top">Retour en haut</a>)</p>
 
 
+<!-- MARKDOWN LINKS & IMAGES -->
+<!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
+[contributors-shield]: https://img.shields.io/github/contributors/samuelhentrics/chifoumi?style=for-the-badge
+[contributors-url]: https://github.com/samuelhentrics/chifoumi/graphs/contributors
+[forks-shield]: https://img.shields.io/github/forks/samuelhentrics/chifoumi.svg?style=for-the-badge
+[forks-url]: https://github.com/samuelhentrics/chifoumi/network/members
+[stars-shield]: https://img.shields.io/github/stars/samuelhentrics/chifoumi.svg?style=for-the-badge
+[stars-url]: https://github.com/samuelhentrics/chifoumi/stargazers
+[issues-shield]: https://img.shields.io/github/issues/samuelhentrics/chifoumi.svg?style=for-the-badge
+[issues-url]: https://github.com/samuelhentrics/chifoumi/issues

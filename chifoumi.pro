@@ -10,13 +10,16 @@ CONFIG += c++11
 
 SOURCES += \
     main.cpp \
-    chifoumi.cpp
+    chifoumi.cpp \
+    parametrage.cpp
 
 HEADERS += \
-    chifoumi.h
+    chifoumi.h \
+    parametrage.h
 
 FORMS += \
-    chifoumi.ui
+    chifoumi.ui \
+    parametrage.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

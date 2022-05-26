@@ -100,7 +100,7 @@ Pour plus d'informations, se référer au docs
 - [ ] v2 Le code source est structuré selon le modèle MVC. Amélioration de l’organisation du code
 - [x] v3 Le menu Fichier >> Quitter permet d’arrêter l’application. Le menu Aide >> A propos de… ouvre une Boîte de Message donnant des informations
 - [x] v4 Le jeu se joue en X points, 5 par défaut.
-- [ ] v5 Le jeu se joue en temps limité, 30 secondes par défaut.
+- [x] v5 Le jeu se joue en temps limité, 30 secondes par défaut.
 - [ ] v6 L’utilisateur peut modifier différents paramètres avant de commencer la partie : son nom, le nombre max. de points, le temps max. à jouer
 - [ ] v7 Le nom du joueur est enregistré dans une base de données.
 - [ ] v8 A la fin de la partie, le système enregistre dans la base de données le résultat de la partie

@@ -255,25 +255,30 @@ void Chifoumi::aProposDe(){
 }
 
 void Chifoumi::parametrerJeu(){
-    param->exec();
-    if (param->getNom()!="") // Si l'utilisateur à remplit le champ de 'nom'
+    int retour = param->exec();
+    switch(retour)
     {
-        ui->lJoueur->setText(QString(param->getNom())); // On change le label avec le nom saisie par l'utilisateur
-        nomJoueur=param->getNom(); // on change la valeur du variable nomJoueur par le nom saisie par l'utilisateur
-    }
+        case QDialog::Accepted :
+            if (param->getNom()!="") // Si l'utilisateur à remplit le champ de 'nom'
+            {
+                ui->lJoueur->setText(QString(param->getNom())); // On change le label avec le nom saisie par l'utilisateur
+                nomJoueur=param->getNom(); // on change la valeur du variable nomJoueur par le nom saisie par l'utilisateur
+            }
 
-    if (param->getPoints()!=0) // Si l'utilisateur à remplit le champ de 'Points'
-    {
-        ui->lGagnantScore->setText(QString::number(param->getPoints())); // On change le label avec le nombre de points saisie par l'utilisateur
-        GagnantScore=param->getPoints(); // on change la valeur du variable GagnantScore par le nombre de points saisie par l'utilisateur
-    }
+            if (param->getPoints()!=0) // Si l'utilisateur à remplit le champ de 'Points'
+            {
+                ui->lGagnantScore->setText(QString::number(param->getPoints())); // On change le label avec le nombre de points saisie par l'utilisateur
+                GagnantScore=param->getPoints(); // on change la valeur du variable GagnantScore par le nombre de points saisie par l'utilisateur
+            }
 
-    if (param->getTemps()!=0) // Si l'utilisateur à remplit le champ de 'Temps'
-    {
-        ui->lTempsRestant->setText(QString::number(param->getTemps())); // On change le label avec le temps saisie par l'utilisateur
-        tempsPartie=param->getTemps(); // on change la valeur du variable tempsPartie par le temps saisie par l'utilisateur
+            if (param->getTemps()!=0) // Si l'utilisateur à remplit le champ de 'Temps'
+            {
+                ui->lTempsRestant->setText(QString::number(param->getTemps())); // On change le label avec le temps saisie par l'utilisateur
+                tempsPartie=param->getTemps(); // on change la valeur du variable tempsPartie par le temps saisie par l'utilisateur
+            }
+        break;
+        default:break;
     }
-
 }
 
 

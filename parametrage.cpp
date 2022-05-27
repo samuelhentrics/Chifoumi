@@ -1,6 +1,6 @@
 #include "parametrage.h"
 #include "ui_parametrage.h"
-
+#include <QMessageBox>
 Parametrage::Parametrage(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::Parametrage)
@@ -26,22 +26,43 @@ QString Parametrage::getNom()
 unsigned int Parametrage::getPoints()
 {
     QString points = ui->lePoints->text();
-    unsigned int point = points.toUInt();
-    if (point>1) // si l'utilisateur a respecté l'intervalle
-    {
-        return point;
+    bool valeurCorrecte;
+    unsigned int point = points.toUInt(&valeurCorrecte, 10);
+    if (!valeurCorrecte){
+        QMessageBox msgBox;
+        msgBox.setWindowTitle("Saisie Impossible");
+        msgBox.setText("Ce champ ne contient pas de valeur numérique.");
+        msgBox.exec();
     }
+    else {
+        if (point>1) // si l'utilisateur a respecté l'intervalle
+        {
+            return point;
+        }
+    }
+
     return 0 ;
 }
 
 unsigned int Parametrage::getTemps()
 {
     QString temps = ui->leTemps->text();
-    unsigned int temp = temps.toUInt();
-    if (temp >10) // si l'utilisateur a respecté l'intervalle
-    {
-        return temp;
+    bool valeurCorrecte;
+    unsigned int temp = temps.toUInt(&valeurCorrecte, 10);
+    if (!valeurCorrecte){
+        QMessageBox msgBox;
+        msgBox.setWindowTitle("Saisie Impossible");
+        msgBox.setText("Ce champ ne contient pas de valeur numérique.");
+        msgBox.exec();
     }
+    else{
+        if (temp >10) // si l'utilisateur a respecté l'intervalle
+        {
+            return temp;
+        }
+    }
+
     return 0 ;
+
 }
 

@@ -52,11 +52,11 @@ QString ChifoumiVue::getNomJoueur(){
     return QString(nomJoueur);
 }
 
-unsigned int ChifoumiVue::getScoreJeu(){
+unsigned int ChifoumiVue::getScoreMaxJeu(){
     return scoreGagnant;
 }
 
-unsigned int ChifoumiVue::getTempsJeu(){
+unsigned int ChifoumiVue::getTempsMaxJeu(){
     return tempsPartie;
 }
 
@@ -265,7 +265,12 @@ void ChifoumiVue::aProposDe(){
 }
 
 void ChifoumiVue::parametrerJeu(){
-    param = new Parametrage(getNomJoueur(), getScoreJeu(), getTempsJeu(), this);
+    // Préremplissage pour la fênetre (reprends le nom du joueur, le temps max et le score max)
+    param->setNom(getNomJoueur());
+    param->setPoints(getScoreMaxJeu());
+    param->setTemps(getTempsMaxJeu());
+
+    // Ouverture de la fenêtre de dialogue pour parametrer
     int retour = param->exec();
     switch(retour)
     {

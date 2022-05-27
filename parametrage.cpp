@@ -2,17 +2,11 @@
 #include "ui_parametrage.h"
 #include <QMessageBox>
 
-Parametrage::Parametrage(QString nom, unsigned int points,
-                         unsigned int temps, QWidget *parent) :
+Parametrage::Parametrage(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::Parametrage)
 {
     ui->setupUi(this);
-
-    // Préremplissage des informations actuelles
-    ui->leNom->setText(nom);
-    ui->lePoints->setText(QString::number(points));
-    ui->leTemps->setText(QString::number(temps));
 
     // Activation des connexions
     QObject::connect(ui->leNom,SIGNAL(textChanged(const QString&)),this,SLOT(getNom()));
@@ -23,6 +17,18 @@ Parametrage::Parametrage(QString nom, unsigned int points,
 Parametrage::~Parametrage()
 {
     delete ui;
+}
+
+void Parametrage::setNom(QString nom){
+    ui->leNom->setText(nom);
+}
+
+void Parametrage::setPoints(unsigned int points){
+    ui->lePoints->setText(QString::number(points));
+}
+
+void Parametrage::setTemps(unsigned int temps){
+    ui->leTemps->setText(QString::number(temps));
 }
 
 QString Parametrage::getNom()
@@ -39,12 +45,14 @@ unsigned int Parametrage::getPoints()
     if (!valeurCorrecte){
         QMessageBox msgBox;
         msgBox.setWindowTitle("Saisie Impossible");
-        msgBox.setText("Ce champ ne contient pas de valeur numérique.");
+        msgBox.setText("Le nombre de points doit être supérieur ou égal à 1.");
         msgBox.exec();
+        ui->buttonBox->setDisabled(true);
     }
     else {
-        if (point>1) // si l'utilisateur a respecté l'intervalle
+        if (point>=1) // si l'utilisateur a respecté l'intervalle
         {
+            ui->buttonBox->setEnabled(true);
             return point;
         }
     }
@@ -60,12 +68,14 @@ unsigned int Parametrage::getTemps()
     if (!valeurCorrecte){
         QMessageBox msgBox;
         msgBox.setWindowTitle("Saisie Impossible");
-        msgBox.setText("Ce champ ne contient pas de valeur numérique.");
+        msgBox.setText("Le temps doit être au minimum de 10 secondes.");
         msgBox.exec();
+        ui->buttonBox->setDisabled(true);
     }
     else{
-        if (temp >10) // si l'utilisateur a respecté l'intervalle
+        if (temp >=10) // si l'utilisateur a respecté l'intervalle
         {
+            ui->buttonBox->setEnabled(true);
             return temp;
         }
     }

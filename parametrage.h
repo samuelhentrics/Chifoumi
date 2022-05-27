@@ -12,9 +12,19 @@ class Parametrage : public QDialog
     Q_OBJECT
 
 public:
-    explicit Parametrage(QString nom = "Vous", unsigned int points = 5,
-                         unsigned int temps = 30, QWidget *parent = nullptr);
+    explicit Parametrage(QWidget *parent = nullptr);
     ~Parametrage();
+
+public:
+    void setNom(QString nom);
+    /* Permet de mettre dans le champ de saisie, le nom actuel du
+     * joueur de la partie*/
+    void setPoints(unsigned int points);
+    /* Permet de mettre dans le champ de saisie, les points actuels
+     * pour gagner une partie*/
+    void setTemps(unsigned int temps);
+    /* Permet de mettre dans le champ de saisie, le temps maximum
+     * actuel pour gagner une partie*/
 
 public slots:
     QString getNom();

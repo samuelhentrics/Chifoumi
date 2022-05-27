@@ -36,16 +36,16 @@ private:
         QTimer *timer = new QTimer(this); // timer qui s'enclenche toutes les 1 secondes
         unsigned int tempsPartie; // Temps par défaut avant la fin d'une partie
         unsigned int tempsRestant; // Temps restant pour la partie
-        Parametrage *param;
+        Parametrage *param = new Parametrage(this);;
 
         ///* Procédures publiques de la vue
     public:
         QString getNomJoueur();
             /* permet de récupérer le nom du joueur dans le jeu */
-        unsigned int getScoreJeu();
+        unsigned int getScoreMaxJeu();
             /* permet de récupérer le score à atteindre pour gagner
              * une partie dans le jeu */
-        unsigned int getTempsJeu();
+        unsigned int getTempsMaxJeu();
             /* permet de récupérer temps maximum pour gagner
              * une partie dans le jeu */
 

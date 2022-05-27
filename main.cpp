@@ -1,11 +1,11 @@
-#include "chifoumi.h"
+#include "chifoumiVue.h"
 
 #include <QApplication>
 
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
-    Chifoumi w;
+    ChifoumiVue w;
     w.show();
     return a.exec();
 }

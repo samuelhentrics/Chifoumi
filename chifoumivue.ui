@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>Chifoumi</class>
- <widget class="QMainWindow" name="Chifoumi">
+ <class>ChifoumiVue</class>
+ <widget class="QMainWindow" name="ChifoumiVue">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Chifoumi</string>
+   <string>ChifoumiVue</string>
   </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QVBoxLayout" name="verticalLayout_2">
@@ -495,7 +495,7 @@
      <x>0</x>
      <y>0</y>
      <width>498</width>
-     <height>26</height>
+     <height>30</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuFichier">

@@ -1,3 +1,11 @@
+/***************************************************************
+ * Name:      parametrage.cpp
+ * Author:    Samuel HENTRICS LOISTINE, Ahmed FAKHFAKH, Cédric ETCHEPARE
+ * Created:   2022-05-27
+ * Description : Permet le paramètrage du jeu
+ **************************************************************/
+
+
 #include "parametrage.h"
 #include "ui_parametrage.h"
 #include <QMessageBox>

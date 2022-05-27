@@ -1,3 +1,10 @@
+/***************************************************************
+ * Name:      parametrage.h
+ * Author:    Samuel HENTRICS LOISTINE, Ahmed FAKHFAKH, Cédric ETCHEPARE
+ * Created:   2022-05-27
+ * Description : Permet le paramètrage du jeu
+ **************************************************************/
+
 #ifndef PARAMETRAGE_H
 #define PARAMETRAGE_H
 

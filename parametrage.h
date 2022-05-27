@@ -14,9 +14,13 @@ class Parametrage : public QDialog
 public:
     explicit Parametrage(QWidget *parent = nullptr);
     ~Parametrage();
+public slots:
     QString getNom();
+    // permet de retouner le nom saisie par l'utilisateur
     unsigned int getPoints();
+    // permet de retourner le nombre max. de points saisie par l'utilisateur
     unsigned int getTemps();
+    // permet de retourner le temps max. à jouer saisie par l'utilisateur
 
 private:
     Ui::Parametrage *ui;

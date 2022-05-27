@@ -7,7 +7,7 @@
 #include "chifoumi.h"
 #include "ui_chifoumi.h"
 #include <QMessageBox>
-
+#include "QDebug"
 #include <cstdlib>
 #include <ctime>
 
@@ -21,11 +21,14 @@ Chifoumi::Chifoumi(QWidget *parent)
 {
     //ctor
     // partie modèle
+    //ui->lScoreMachine->setText(QString::number(scoreMachine));
+    nomJoueur="le joueur"; // Si la jouer n'a pas saisie son nom dans les paramètres
     scoreJoueur=0;
     scoreMachine=0;
+    GagnantScore=5; // Score à atteindre par défaut afin de gagner
     coupJoueur=rien;
     coupMachine=rien;
-    tempsPartie=30;
+    tempsPartie=30; // temps limite par défaut afin que la partie se termine
     ui->setupUi(this);
 
     // Activation des connexions pour les boutons
@@ -84,25 +87,25 @@ void Chifoumi::finirPartie()
     mBox = new QMessageBox();
 
     //On vérifie si le joueur à gagné.
-    if (getScoreJoueur()==5)
+    if (getScoreJoueur()==GagnantScore)
     {
         // On désactive tous les boutons pour jouer
         desactiver();
         // Afficher le message de fin du partie
         mBox->information(this,
                           tr("Fin de partie"),
-                         "Bravo le joueur ! Vous gagnez en 5 points.");
+                         "Bravo "+QString(nomJoueur)+" ! Vous gagnez en "+QString::number(GagnantScore)+" points.");
     }
 
     //On vérifie si la machine à gagnée.
-    else if (getScoreMachine()==5)
+    else if (getScoreMachine()==GagnantScore)
     {
         // On désactive tous les boutons pour jouer
         desactiver();
         // Afficher le message de fin du partie
         mBox->information(this,
                           tr("Fin de partie"),
-                         "Bravo la machine ! Vous gagnez en 5 points.");
+                         "Bravo la machine ! Vous gagnez en "+QString::number(GagnantScore)+" points.");
     }
 
     // On vérifie si le timer est à zéro
@@ -253,10 +256,25 @@ void Chifoumi::aProposDe(){
 
 void Chifoumi::parametrerJeu(){
     param->exec();
+    if (param->getNom()!="") // Si l'utilisateur à remplit le champ de 'nom'
+    {
+        ui->lJoueur->setText(QString(param->getNom())); // On change le label avec le nom saisie par l'utilisateur
+        nomJoueur=param->getNom(); // on change la valeur du variable nomJoueur par le nom saisie par l'utilisateur
+    }
+
+    if (param->getPoints()!=0) // Si l'utilisateur à remplit le champ de 'Points'
+    {
+        ui->lGagnantScore->setText(QString::number(param->getPoints())); // On change le label avec le nombre de points saisie par l'utilisateur
+        GagnantScore=param->getPoints(); // on change la valeur du variable GagnantScore par le nombre de points saisie par l'utilisateur
+    }
+
+    if (param->getTemps()!=0) // Si l'utilisateur à remplit le champ de 'Temps'
+    {
+        ui->lTempsRestant->setText(QString::number(param->getTemps())); // On change le label avec le temps saisie par l'utilisateur
+        tempsPartie=param->getTemps(); // on change la valeur du variable tempsPartie par le temps saisie par l'utilisateur
+    }
+
 }
-
-
-
 
 
 Chifoumi::UnCoup Chifoumi::getCoupJoueur() {

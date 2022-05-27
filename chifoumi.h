@@ -83,8 +83,10 @@ private:
 
          ///* Attributs du Modèle
      private:
+        QString nomJoueur; // nom du joueur
         unsigned int scoreJoueur;   // score actuel du joueur
         unsigned int scoreMachine;  // score actuel de la Machine
+        unsigned int GagnantScore;  // score à atteindre pour gagner
         UnCoup coupJoueur;          // dernier coup joué par le joueur
         UnCoup coupMachine;         // dernier coup joué par la machine
         QTimer *timer = new QTimer(this); // timer qui s'enclenche toutes les 1 secondes

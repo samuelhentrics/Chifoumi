@@ -1,11 +1,19 @@
 #include "parametrage.h"
 #include "ui_parametrage.h"
 #include <QMessageBox>
-Parametrage::Parametrage(QWidget *parent) :
+
+Parametrage::Parametrage(QString nom, unsigned int points,
+                         unsigned int temps, QWidget *parent) :
     QDialog(parent),
     ui(new Ui::Parametrage)
 {
     ui->setupUi(this);
+
+    // Préremplissage des informations actuelles
+    ui->leNom->setText(nom);
+    ui->lePoints->setText(QString::number(points));
+    ui->leTemps->setText(QString::number(temps));
+
     // Activation des connexions
     QObject::connect(ui->leNom,SIGNAL(textChanged(const QString&)),this,SLOT(getNom()));
     QObject::connect(ui->lePoints,SIGNAL(textChanged(const QString&)),this,SLOT(getPoints()));

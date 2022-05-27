@@ -24,7 +24,7 @@ ChifoumiVue::ChifoumiVue(QWidget *parent)
 
     // Paramètrage de base pour une partie
     nomJoueur="Vous"; // Si la jouer n'a pas saisie son nom dans les paramètres
-    GagnantScore=5; // Score à atteindre par défaut afin de gagner
+    scoreGagnant=5; // Score à atteindre par défaut afin de gagner
     tempsPartie=30; // temps limite par défaut afin que la partie se termine
     ui->setupUi(this);
 
@@ -45,6 +45,19 @@ ChifoumiVue::ChifoumiVue(QWidget *parent)
 ChifoumiVue::~ChifoumiVue()
 {
     delete ui;
+}
+
+
+QString ChifoumiVue::getNomJoueur(){
+    return QString(nomJoueur);
+}
+
+unsigned int ChifoumiVue::getScoreJeu(){
+    return scoreGagnant;
+}
+
+unsigned int ChifoumiVue::getTempsJeu(){
+    return tempsPartie;
 }
 
 void ChifoumiVue::lancerPartie(){
@@ -84,25 +97,25 @@ void ChifoumiVue::finirPartie()
     mBox = new QMessageBox();
 
     //On vérifie si le joueur à gagné.
-    if (leJeu->getScoreJoueur()==GagnantScore)
+    if (leJeu->getScoreJoueur()==scoreGagnant)
     {
         // On désactive tous les boutons pour jouer
         desactiver();
         // Afficher le message de fin du partie
         mBox->information(this,
                           tr("Fin de partie"),
-                         "Bravo "+QString(nomJoueur)+" ! Vous gagnez en "+QString::number(GagnantScore)+" points.");
+                         "Bravo "+QString(nomJoueur)+" ! Vous gagnez en "+QString::number(scoreGagnant)+" points.");
     }
 
     //On vérifie si la machine à gagnée.
-    else if (leJeu->getScoreMachine()==GagnantScore)
+    else if (leJeu->getScoreMachine()==scoreGagnant)
     {
         // On désactive tous les boutons pour jouer
         desactiver();
         // Afficher le message de fin du partie
         mBox->information(this,
                           tr("Fin de partie"),
-                         "Bravo la machine ! Vous gagnez en "+QString::number(GagnantScore)+" points.");
+                         "Bravo la machine ! Vous gagnez en "+QString::number(scoreGagnant)+" points.");
     }
 
     // On vérifie si le timer est à zéro
@@ -252,6 +265,7 @@ void ChifoumiVue::aProposDe(){
 }
 
 void ChifoumiVue::parametrerJeu(){
+    param = new Parametrage(getNomJoueur(), getScoreJeu(), getTempsJeu(), this);
     int retour = param->exec();
     switch(retour)
     {
@@ -265,7 +279,7 @@ void ChifoumiVue::parametrerJeu(){
             if (param->getPoints()!=0) // Si l'utilisateur à remplit le champ de 'Points'
             {
                 ui->lGagnantScore->setText(QString::number(param->getPoints())); // On change le label avec le nombre de points saisie par l'utilisateur
-                GagnantScore=param->getPoints(); // on change la valeur du variable GagnantScore par le nombre de points saisie par l'utilisateur
+                scoreGagnant=param->getPoints(); // on change la valeur du variable GagnantScore par le nombre de points saisie par l'utilisateur
             }
 
             if (param->getTemps()!=0) // Si l'utilisateur à remplit le champ de 'Temps'

@@ -28,15 +28,26 @@ public:
 private:
     Ui::ChifoumiVue *ui;
 
-         ///* Attributs de la vue
+         ///* Attributs privés de la vue
      private:
         Chifoumi *leJeu = new Chifoumi();
         QString nomJoueur; // nom du joueur
-        unsigned int GagnantScore;  // score à atteindre pour gagner
+        unsigned int scoreGagnant;  // score à atteindre pour gagner
         QTimer *timer = new QTimer(this); // timer qui s'enclenche toutes les 1 secondes
         unsigned int tempsPartie; // Temps par défaut avant la fin d'une partie
         unsigned int tempsRestant; // Temps restant pour la partie
-        Parametrage *param = new Parametrage(this);
+        Parametrage *param;
+
+        ///* Procédures publiques de la vue
+    public:
+        QString getNomJoueur();
+            /* permet de récupérer le nom du joueur dans le jeu */
+        unsigned int getScoreJeu();
+            /* permet de récupérer le score à atteindre pour gagner
+             * une partie dans le jeu */
+        unsigned int getTempsJeu();
+            /* permet de récupérer temps maximum pour gagner
+             * une partie dans le jeu */
 
         ///* Procédures privées de la vue
     private:

@@ -12,8 +12,10 @@ class Parametrage : public QDialog
     Q_OBJECT
 
 public:
-    explicit Parametrage(QWidget *parent = nullptr);
+    explicit Parametrage(QString nom = "Vous", unsigned int points = 5,
+                         unsigned int temps = 30, QWidget *parent = nullptr);
     ~Parametrage();
+
 public slots:
     QString getNom();
     // permet de retouner le nom saisie par l'utilisateur

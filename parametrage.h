@@ -18,10 +18,12 @@ class Parametrage : public QDialog
 {
     Q_OBJECT
 
+    ///* Méthodes de la vue
 public:
     explicit Parametrage(QWidget *parent = nullptr);
     ~Parametrage();
 
+    // Setters
 public:
     void setNom(QString nom);
     /* Permet de mettre dans le champ de saisie, le nom actuel du
@@ -33,14 +35,16 @@ public:
     /* Permet de mettre dans le champ de saisie, le temps maximum
      * actuel pour gagner une partie*/
 
+    ///* Slots
 public slots:
     QString getNom();
-    // permet de retouner le nom saisie par l'utilisateur
+    // Retourne le nom saisie par l'utilisateur
     unsigned int getPoints();
-    // permet de retourner le nombre max. de points saisie par l'utilisateur
+    // Retourne le nombre max. de points saisie par l'utilisateur
     unsigned int getTemps();
-    // permet de retourner le temps max. à jouer saisie par l'utilisateur
+    // Retourne le temps max. à jouer saisie par l'utilisateur
 
+    ///* Attributs de la vue
 private:
     Ui::Parametrage *ui;
 };

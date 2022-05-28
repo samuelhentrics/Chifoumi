@@ -12,6 +12,8 @@
 #include <QTimer>
 #include "chifoumi.h"
 #include "parametrage.h"
+#include <QMessageBox>
+
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class ChifoumiVue; }
@@ -30,13 +32,14 @@ private:
 
          ///* Attributs privés de la vue
      private:
-        Chifoumi *leJeu = new Chifoumi();
-        QString nomJoueur; // nom du joueur
         unsigned int scoreGagnant;  // score à atteindre pour gagner
-        QTimer *timer = new QTimer(this); // timer qui s'enclenche toutes les 1 secondes
         unsigned int tempsPartie; // Temps par défaut avant la fin d'une partie
         unsigned int tempsRestant; // Temps restant pour la partie
-        Parametrage *param = new Parametrage(this);;
+        Chifoumi *leJeu = new Chifoumi();
+        QString nomJoueur; // nom du joueur
+        QTimer *timer = new QTimer(this); // timer qui s'enclenche toutes les 1 secondes
+        Parametrage *param = new Parametrage(this);; // Boite de dialogue pour parametrer le jeu
+        QMessageBox* mBox = new QMessageBox(); // Permet l'affichage de message d'information (gagnant par exemple)
 
         ///* Procédures publiques de la vue
     public:
@@ -80,8 +83,8 @@ private:
             /* Met le jeu en pause lorsque l'utilisateur demande à mettre le jeu en pause.
              * Ou alors reprend la partie si le timer est inactif*/
         void parametrerJeu();
-        /* Fonction permettant à l'utilisateur de paramètrer le jeu
-         * (son nom, la durée d'une partie, le nombre de points pour gagner) */
+            /* Procédure permettant à l'utilisateur de paramètrer le jeu
+            * (son nom, la durée d'une partie, le nombre de points pour gagner) */
 
 };
 

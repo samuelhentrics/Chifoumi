@@ -8,20 +8,18 @@
 #include "chifoumivue.h"
 #include "chifoumi.h"
 #include "ui_chifoumivue.h"
-#include <QMessageBox>
 #include "QDebug"
 #include <cstdlib>
 #include <ctime>
 
 
-///* ---- PARTIE MODèLE ---------------------------
+///* ---- PARTIE VUE ---------------------------
 
 
 ChifoumiVue::ChifoumiVue(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::ChifoumiVue)
 {
-
     // Paramètrage de base pour une partie
     nomJoueur="Vous"; // Si la jouer n'a pas saisie son nom dans les paramètres
     scoreGagnant=5; // Score à atteindre par défaut afin de gagner
@@ -47,6 +45,7 @@ ChifoumiVue::~ChifoumiVue()
     delete ui;
 }
 
+///* GETTERS
 
 QString ChifoumiVue::getNomJoueur(){
     return QString(nomJoueur);
@@ -59,6 +58,27 @@ unsigned int ChifoumiVue::getScoreMaxJeu(){
 unsigned int ChifoumiVue::getTempsMaxJeu(){
     return tempsPartie;
 }
+
+
+///* Procédure de la vue
+
+void ChifoumiVue::desactiver(){
+    // Désactiver les boutons pierre, papier, ciseau
+    ui->bPierre->setEnabled(false);
+    ui->bPapier->setEnabled(false);
+    ui->bCiseau->setEnabled(false);
+
+    // Désactiver le timer
+    timer->stop();
+    ui->bPause->setText("Pause");
+    ui->bPause->setEnabled(false);
+
+    // On réactive la possibilité de paramètrer le jeu
+    connect(ui->actionParam_trage, SIGNAL(triggered()), this, SLOT(parametrerJeu()));
+}
+
+
+/// Slots de la vue
 
 void ChifoumiVue::lancerPartie(){
     // Activer les boutons pierre, papier, ciseau
@@ -93,9 +113,6 @@ void ChifoumiVue::lancerPartie(){
 
 void ChifoumiVue::finirPartie()
 {
-    QMessageBox* mBox;
-    mBox = new QMessageBox();
-
     //On vérifie si le joueur à gagné.
     if (leJeu->getScoreJoueur()==scoreGagnant)
     {
@@ -139,22 +156,6 @@ void ChifoumiVue::finirPartie()
                          message);
     }
 
-
-}
-
-void ChifoumiVue::desactiver(){
-    // Désactiver les boutons pierre, papier, ciseau
-    ui->bPierre->setEnabled(false);
-    ui->bPapier->setEnabled(false);
-    ui->bCiseau->setEnabled(false);
-
-    // Désactiver le timer
-    timer->stop();
-    ui->bPause->setText("Pause");
-    ui->bPause->setEnabled(false);
-
-    // On réactive la possibilité de paramètrer le jeu
-    connect(ui->actionParam_trage, SIGNAL(triggered()), this, SLOT(parametrerJeu()));
 }
 
 void ChifoumiVue::majTemps(){
@@ -296,3 +297,4 @@ void ChifoumiVue::parametrerJeu(){
         default:break;
     }
 }
+

@@ -1,4 +1,4 @@
-#include "chifoumiVue.h"
+#include "chifoumivue.h"
 
 #include <QApplication>
 

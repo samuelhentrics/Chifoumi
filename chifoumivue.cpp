@@ -121,7 +121,7 @@ void ChifoumiVue::finirPartie()
         // Afficher le message de fin du partie
         mBox->information(this,
                           tr("Fin de partie"),
-                         "Bravo "+QString(nomJoueur)+" ! Vous gagnez en "+QString::number(scoreGagnant)+" points.");
+                          "Bravo "+QString(nomJoueur)+" ! Vous gagnez en "+QString::number(scoreGagnant)+" points.");
     }
 
     //On vérifie si la machine à gagnée.
@@ -132,7 +132,7 @@ void ChifoumiVue::finirPartie()
         // Afficher le message de fin du partie
         mBox->information(this,
                           tr("Fin de partie"),
-                         "Bravo la machine ! Vous gagnez en "+QString::number(scoreGagnant)+" points.");
+                          "Bravo la machine ! Vous gagnez en "+QString::number(scoreGagnant)+" points.");
     }
 
     // On vérifie si le timer est à zéro
@@ -153,7 +153,7 @@ void ChifoumiVue::finirPartie()
         }
         mBox->information(this,
                           tr("Fin de partie"),
-                         message);
+                          message);
     }
 
 }
@@ -275,26 +275,17 @@ void ChifoumiVue::parametrerJeu(){
     int retour = param->exec();
     switch(retour)
     {
-        case QDialog::Accepted :
-            if (param->getNom()!="") // Si l'utilisateur à remplit le champ de 'nom'
-            {
-                ui->lJoueur->setText(QString(param->getNom())); // On change le label avec le nom saisie par l'utilisateur
-                nomJoueur=param->getNom(); // on change la valeur du variable nomJoueur par le nom saisie par l'utilisateur
-            }
+    case QDialog::Accepted :
+        ui->lJoueur->setText(QString(param->getNom())); // On change le label avec le nom saisie par l'utilisateur
+        nomJoueur=param->getNom(); // on change la valeur du variable nomJoueur par le nom saisie par l'utilisateur
 
-            if (param->getPoints()!=0) // Si l'utilisateur à remplit le champ de 'Points'
-            {
-                ui->lGagnantScore->setText(QString::number(param->getPoints())); // On change le label avec le nombre de points saisie par l'utilisateur
-                scoreGagnant=param->getPoints(); // on change la valeur du variable GagnantScore par le nombre de points saisie par l'utilisateur
-            }
+        ui->lGagnantScore->setText(QString::number(param->getPoints())); // On change le label avec le nombre de points saisie par l'utilisateur
+        scoreGagnant=param->getPoints(); // on change la valeur du variable GagnantScore par le nombre de points saisie par l'utilisateur
 
-            if (param->getTemps()!=0) // Si l'utilisateur à remplit le champ de 'Temps'
-            {
-                ui->lTempsRestant->setText(QString::number(param->getTemps())); // On change le label avec le temps saisie par l'utilisateur
-                tempsPartie=param->getTemps(); // on change la valeur du variable tempsPartie par le temps saisie par l'utilisateur
-            }
+        ui->lTempsRestant->setText(QString::number(param->getTemps())); // On change le label avec le temps saisie par l'utilisateur
+        tempsPartie=param->getTemps(); // on change la valeur du variable tempsPartie par le temps saisie par l'utilisateur
         break;
-        default:break;
+    default:break;
     }
 }
 

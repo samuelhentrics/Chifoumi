@@ -10,6 +10,8 @@
 #include "ui_parametrage.h"
 #include <QMessageBox>
 
+///* ---- PARTIE VUE ---------------------------
+
 Parametrage::Parametrage(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::Parametrage)
@@ -17,15 +19,17 @@ Parametrage::Parametrage(QWidget *parent) :
     ui->setupUi(this);
 
     // Activation des connexions
-    QObject::connect(ui->leNom,SIGNAL(textChanged(const QString&)),this,SLOT(getNom()));
-    QObject::connect(ui->lePoints,SIGNAL(textChanged(const QString&)),this,SLOT(getPoints()));
-    QObject::connect(ui->leTemps,SIGNAL(textChanged(const QString&)),this,SLOT(getTemps()));
+    QObject::connect(ui->leNom,SIGNAL(textChanged(const QString&)),this,SLOT(verifierNom()));
+    QObject::connect(ui->lePoints,SIGNAL(textChanged(const QString&)),this,SLOT(verifierPoints()));
+    QObject::connect(ui->leTemps,SIGNAL(textChanged(const QString&)),this,SLOT(verifierTemps()));
 }
 
 Parametrage::~Parametrage()
 {
     delete ui;
 }
+
+///* Setters
 
 void Parametrage::setNom(QString nom){
     ui->leNom->setText(nom);
@@ -39,13 +43,42 @@ void Parametrage::setTemps(unsigned int temps){
     ui->leTemps->setText(QString::number(temps));
 }
 
+
+///* Getters
+
 QString Parametrage::getNom()
 {
-    QString nom = ui->leNom->text();
-    return nom;
+    return ui->leNom->text();
 }
 
 unsigned int Parametrage::getPoints()
+{
+    return ui->lePoints->text().toInt() ;
+}
+
+unsigned int Parametrage::getTemps()
+{
+    return ui->leTemps->text().toInt() ;
+}
+
+///* Slots privés
+
+void Parametrage::verifierNom()
+{
+    QString nom = ui->leNom->text();
+    if (nom==""){
+        QMessageBox msgBox;
+        msgBox.setWindowTitle("Saisie Impossible");
+        msgBox.setText("Votre nom ne peut être vide.");
+        msgBox.exec();
+        ui->buttonBox->setDisabled(true);
+    }
+    else{
+        ui->buttonBox->setEnabled(true);
+    }
+}
+
+void Parametrage::verifierPoints()
 {
     QString points = ui->lePoints->text();
     bool valeurCorrecte;
@@ -61,14 +94,11 @@ unsigned int Parametrage::getPoints()
         if (point>=1) // si l'utilisateur a respecté l'intervalle
         {
             ui->buttonBox->setEnabled(true);
-            return point;
         }
     }
-
-    return 0 ;
 }
 
-unsigned int Parametrage::getTemps()
+void Parametrage::verifierTemps()
 {
     QString temps = ui->leTemps->text();
     bool valeurCorrecte;
@@ -84,11 +114,6 @@ unsigned int Parametrage::getTemps()
         if (temp >=10) // si l'utilisateur a respecté l'intervalle
         {
             ui->buttonBox->setEnabled(true);
-            return temp;
         }
     }
-
-    return 0 ;
-
 }
-

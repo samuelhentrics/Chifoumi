@@ -36,13 +36,21 @@ public:
      * actuel pour gagner une partie*/
 
     ///* Slots
-public slots:
+public:
     QString getNom();
     // Retourne le nom saisie par l'utilisateur
     unsigned int getPoints();
     // Retourne le nombre max. de points saisie par l'utilisateur
     unsigned int getTemps();
     // Retourne le temps max. à jouer saisie par l'utilisateur
+
+private slots:
+    void verifierNom();
+    /* Permet de vérifier la conformité du nom saisi*/
+    void verifierPoints();
+    /* Permet de vérifier la conformité des points saisis*/
+    void verifierTemps();
+    /* Permet de vérifier la conformité du temps saisi*/
 
     ///* Attributs de la vue
 private:

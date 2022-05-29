@@ -46,11 +46,7 @@ public:
 
 private slots:
     void verifierNom();
-    /* Permet de vérifier la conformité du nom saisi*/
-    void verifierPoints();
-    /* Permet de vérifier la conformité des points saisis*/
-    void verifierTemps();
-    /* Permet de vérifier la conformité du temps saisi*/
+    /* Permet de vérifier que le nom n'est pas vide*/
 
     ///* Attributs de la vue
 private:

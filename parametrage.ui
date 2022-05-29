@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>510</width>
-    <height>226</height>
+    <height>245</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -25,7 +25,6 @@
      <property name="font">
       <font>
        <pointsize>11</pointsize>
-       <weight>75</weight>
        <bold>true</bold>
        <underline>true</underline>
       </font>
@@ -40,21 +39,16 @@
    </item>
    <item>
     <layout class="QGridLayout" name="gridLayout">
-     <item row="1" column="0">
-      <widget class="QLabel" name="lPoints">
-       <property name="text">
-        <string>Nombre de points pour gagner
-(min. 1 point)</string>
-       </property>
-      </widget>
-     </item>
-     <item row="2" column="0">
+     <item row="3" column="0">
       <widget class="QLabel" name="lTemps">
        <property name="text">
         <string>Temps maximum d'une partie en secondes
  (min.10s)</string>
        </property>
       </widget>
+     </item>
+     <item row="0" column="1">
+      <widget class="QLineEdit" name="leNom"/>
      </item>
      <item row="0" column="0">
       <widget class="QLabel" name="lNom">
@@ -63,14 +57,33 @@
        </property>
       </widget>
      </item>
-     <item row="0" column="1">
-      <widget class="QLineEdit" name="leNom"/>
+     <item row="1" column="0">
+      <widget class="QLabel" name="lPoints">
+       <property name="text">
+        <string>Nombre de points pour gagner
+(min. 1 point)</string>
+       </property>
+      </widget>
      </item>
      <item row="1" column="1">
-      <widget class="QLineEdit" name="lePoints"/>
+      <widget class="QSpinBox" name="lePoints">
+       <property name="minimum">
+        <number>1</number>
+       </property>
+       <property name="maximum">
+        <number>9999</number>
+       </property>
+      </widget>
      </item>
-     <item row="2" column="1">
-      <widget class="QLineEdit" name="leTemps"/>
+     <item row="3" column="1">
+      <widget class="QSpinBox" name="leTemps">
+       <property name="minimum">
+        <number>10</number>
+       </property>
+       <property name="maximum">
+        <number>9999</number>
+       </property>
+      </widget>
      </item>
     </layout>
    </item>

@@ -10,6 +10,7 @@
 #include "ui_parametrage.h"
 #include <QMessageBox>
 #include <QPushButton>
+#include <QIntValidator>
 
 ///* ---- PARTIE VUE ---------------------------
 
@@ -21,8 +22,6 @@ Parametrage::Parametrage(QWidget *parent) :
 
     // Activation des connexions
     QObject::connect(ui->leNom,SIGNAL(textChanged(const QString&)),this,SLOT(verifierNom()));
-    QObject::connect(ui->lePoints,SIGNAL(textChanged(const QString&)),this,SLOT(verifierPoints()));
-    QObject::connect(ui->leTemps,SIGNAL(textChanged(const QString&)),this,SLOT(verifierTemps()));
 }
 
 Parametrage::~Parametrage()
@@ -37,11 +36,11 @@ void Parametrage::setNom(QString nom){
 }
 
 void Parametrage::setPoints(unsigned int points){
-    ui->lePoints->setText(QString::number(points));
+    ui->lePoints->setValue(points);
 }
 
 void Parametrage::setTemps(unsigned int temps){
-    ui->leTemps->setText(QString::number(temps));
+    ui->leTemps->setValue(temps);
 }
 
 
@@ -54,12 +53,12 @@ QString Parametrage::getNom()
 
 unsigned int Parametrage::getPoints()
 {
-    return ui->lePoints->text().toInt() ;
+    return ui->lePoints->value() ;
 }
 
 unsigned int Parametrage::getTemps()
 {
-    return ui->leTemps->text().toInt() ;
+    return ui->leTemps->value() ;
 }
 
 ///* Slots privés
@@ -79,42 +78,3 @@ void Parametrage::verifierNom()
     }
 }
 
-void Parametrage::verifierPoints()
-{
-    QString points = ui->lePoints->text();
-    bool valeurCorrecte;
-    unsigned int point = points.toUInt(&valeurCorrecte, 10);
-    if (!valeurCorrecte){
-        QMessageBox msgBox;
-        msgBox.setWindowTitle("Saisie Impossible");
-        msgBox.setText("Le nombre de points doit être supérieur ou égal à 1.");
-        msgBox.exec();
-        ui->buttonBox->button(QDialogButtonBox::Ok)->setDisabled(true);
-    }
-    else {
-        if (point>=1) // si l'utilisateur a respecté l'intervalle
-        {
-            ui->buttonBox->button(QDialogButtonBox::Ok)->setEnabled(true);
-        }
-    }
-}
-
-void Parametrage::verifierTemps()
-{
-    QString temps = ui->leTemps->text();
-    bool valeurCorrecte;
-    unsigned int temp = temps.toUInt(&valeurCorrecte, 10);
-    if (!valeurCorrecte){
-        QMessageBox msgBox;
-        msgBox.setWindowTitle("Saisie Impossible");
-        msgBox.setText("Le temps doit être au minimum de 10 secondes.");
-        msgBox.exec();
-        ui->buttonBox->button(QDialogButtonBox::Ok)->setDisabled(true);
-    }
-    else{
-        if (temp >=10) // si l'utilisateur a respecté l'intervalle
-        {
-            ui->buttonBox->button(QDialogButtonBox::Ok)->setEnabled(true);
-        }
-    }
-}

@@ -9,6 +9,7 @@
 #include "parametrage.h"
 #include "ui_parametrage.h"
 #include <QMessageBox>
+#include <QPushButton>
 
 ///* ---- PARTIE VUE ---------------------------
 
@@ -71,10 +72,10 @@ void Parametrage::verifierNom()
         msgBox.setWindowTitle("Saisie Impossible");
         msgBox.setText("Votre nom ne peut être vide.");
         msgBox.exec();
-        ui->buttonBox->setDisabled(true);
+        ui->buttonBox->button(QDialogButtonBox::Ok)->setDisabled(true);
     }
     else{
-        ui->buttonBox->setEnabled(true);
+        ui->buttonBox->button(QDialogButtonBox::Ok)->setEnabled(true);
     }
 }
 
@@ -88,12 +89,12 @@ void Parametrage::verifierPoints()
         msgBox.setWindowTitle("Saisie Impossible");
         msgBox.setText("Le nombre de points doit être supérieur ou égal à 1.");
         msgBox.exec();
-        ui->buttonBox->setDisabled(true);
+        ui->buttonBox->button(QDialogButtonBox::Ok)->setDisabled(true);
     }
     else {
         if (point>=1) // si l'utilisateur a respecté l'intervalle
         {
-            ui->buttonBox->setEnabled(true);
+            ui->buttonBox->button(QDialogButtonBox::Ok)->setEnabled(true);
         }
     }
 }
@@ -108,12 +109,12 @@ void Parametrage::verifierTemps()
         msgBox.setWindowTitle("Saisie Impossible");
         msgBox.setText("Le temps doit être au minimum de 10 secondes.");
         msgBox.exec();
-        ui->buttonBox->setDisabled(true);
+        ui->buttonBox->button(QDialogButtonBox::Ok)->setDisabled(true);
     }
     else{
         if (temp >=10) // si l'utilisateur a respecté l'intervalle
         {
-            ui->buttonBox->setEnabled(true);
+            ui->buttonBox->button(QDialogButtonBox::Ok)->setEnabled(true);
         }
     }
 }

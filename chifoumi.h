@@ -1,7 +1,7 @@
 /***************************************************************
  * Name:      chifoumi.h
  * Author:    Samuel HENTRICS LOISTINE, Ahmed FAKHFAKH, Cédric ETCHEPARE
- * Created:   2022-05-27
+ * Created:   2022-04-14
  * Description : classe métier (= Modèle) Chifoumi-v1
  **************************************************************/
 

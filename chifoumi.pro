@@ -1,4 +1,4 @@
-QT       += core gui
+QT       += core gui sql
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -11,6 +11,7 @@ CONFIG += c++11
 SOURCES += \
     chifoumivue.cpp \
     connexion.cpp \
+    database.cpp \
     main.cpp \
     chifoumi.cpp \
     parametrage.cpp
@@ -19,6 +20,7 @@ HEADERS += \
     chifoumi.h \
     chifoumivue.h \
     connexion.h \
+    database.h \
     parametrage.h
 
 FORMS += \

@@ -4,19 +4,19 @@
 #include <QDialog>
 
 namespace Ui {
-class connexion;
+class Connexion;
 }
 
-class connexion : public QDialog
+class Connexion : public QDialog
 {
     Q_OBJECT
 
 public:
-    explicit connexion(QWidget *parent = nullptr);
-    ~connexion();
+    explicit Connexion(QWidget *parent = nullptr);
+    ~Connexion();
 
 private:
-    Ui::connexion *ui;
+    Ui::Connexion *ui;
 };
 
 #endif // CONNEXION_H

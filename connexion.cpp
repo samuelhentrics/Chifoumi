@@ -1,14 +1,14 @@
 #include "connexion.h"
 #include "ui_connexion.h"
 
-connexion::connexion(QWidget *parent) :
+Connexion::Connexion(QWidget *parent) :
     QDialog(parent),
-    ui(new Ui::connexion)
+    ui(new Ui::Connexion)
 {
     ui->setupUi(this);
 }
 
-connexion::~connexion()
+Connexion::~Connexion()
 {
     delete ui;
 }

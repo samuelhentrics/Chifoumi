@@ -45,6 +45,9 @@ bool Database::createTable()
         qDebug() <<"table existante";
         return false;
     }
+    QVariantList user;
+
+
 }
 
 bool Database::insertTable(const QVariantList &data)

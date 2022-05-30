@@ -12,6 +12,7 @@ public:
     Database();
     bool openDatabase();
     void closeDatabase();
+    bool restoreDatabase();
 
 private:
     QSqlDatabase mydb;

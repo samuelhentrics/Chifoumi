@@ -22,6 +22,14 @@ void Database::closeDatabase()
     mydb.close();
 }
 
+bool Database::restoreDatabase(){
+    bool ok = openDatabase();
+    if(ok){
+        createTable();
+    }
+    return ok;
+
+}
 
 bool Database::createTable()
 {
@@ -54,13 +62,4 @@ bool Database::insertTable(const QVariantList &data)
     }
     else
         return true;
-}
-
-bool Database::restoreDatabase(){
-    bool ok = openDatabase();
-    if(ok){
-        createTable();
-    }
-    return ok;
-
 }

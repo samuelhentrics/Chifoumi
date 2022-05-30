@@ -2,6 +2,8 @@
 #define CONNEXION_H
 
 #include <QDialog>
+#include "chifoumivue.h"
+#include "database.h"
 
 namespace Ui {
 class Connexion;
@@ -17,6 +19,11 @@ public:
 
 private:
     Ui::Connexion *ui;
+    Database *db = new Database();
+    ChifoumiVue *chifoumi = new ChifoumiVue();
+
+private slots:
+    void connexion();
 };
 
 #endif // CONNEXION_H

@@ -20,7 +20,7 @@ public:
 private:
     Ui::Connexion *ui;
     Database *db = new Database();
-    ChifoumiVue *chifoumi = new ChifoumiVue();
+    ChifoumiVue *chifoumi;
 
 private slots:
     void connexion();

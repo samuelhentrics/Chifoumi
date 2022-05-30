@@ -64,7 +64,7 @@
     </layout>
    </item>
    <item>
-    <widget class="QPushButton" name="entrer">
+    <widget class="QPushButton" name="bEntrer">
      <property name="text">
       <string>Entrer...</string>
      </property>

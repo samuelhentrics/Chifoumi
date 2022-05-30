@@ -21,3 +21,11 @@ void Database::closeDatabase()
 {
     mydb.close();
 }
+
+bool Database::restoreDatabase(){
+    bool ok = openDatabase();
+    if(ok){
+        createTable();
+    }
+    return ok;
+}

@@ -10,6 +10,7 @@ CONFIG += c++11
 
 SOURCES += \
     chifoumivue.cpp \
+    database.cpp \
     main.cpp \
     chifoumi.cpp \
     parametrage.cpp
@@ -17,6 +18,7 @@ SOURCES += \
 HEADERS += \
     chifoumi.h \
     chifoumivue.h \
+    database.h \
     parametrage.h
 
 FORMS += \

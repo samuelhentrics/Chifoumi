@@ -1,3 +1,10 @@
+/***************************************************************
+ * Name:      connexion.h
+ * Author:    Samuel HENTRICS LOISTINE, Ahmed FAKHFAKH, Cédric ETCHEPARE
+ * Created:   2022-05-30
+ * Description : Chifoumi v7
+ **************************************************************/
+
 #ifndef CONNEXION_H
 #define CONNEXION_H
 
@@ -19,11 +26,12 @@ public:
 
 private:
     Ui::Connexion *ui;
-    Database *db = new Database();
-    ChifoumiVue *chifoumi = new ChifoumiVue();
+    Database *db = new Database(); //
+    ChifoumiVue *chifoumi = new ChifoumiVue(); //
 
 private slots:
-    void connexion();
+    void validerConnexion();
+    // permet de se connecter
 };
 
 #endif // CONNEXION_H

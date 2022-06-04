@@ -37,15 +37,21 @@ bool Database::createTable()
     bool ok =query.exec("create table Identifiants (utilisateur varchar(5) primary key, mdp varchar(30))");
     if (ok)
     {
-        qDebug() <<"table crée";
+        //qDebug() <<"table crée";
         return true;
     }
     else
     {
-        qDebug() <<"table existante";
+        //qDebug() <<"table existante";
         return false;
     }
-    QVariantList user;
+
+    // On va insérer un joueur de base lors de la création de la base/si la base existe mais
+    // le joueur n'existe pas.
+    QSqlQuery insertQuery("insert into Utilisateurs values ('elliot','test')");
+    if (insertQuery.exec()){
+        qDebug() << "Ajout de l'utilisateur principal, OK";
+    }
 
 
 }
@@ -59,8 +65,8 @@ bool Database::insertTable(const QVariantList &data)
     query.bindValue(":utilisateur", data[0].toString());
     query.bindValue(":mdp", data[1].toString());
     if(!query.exec()){
-        qDebug() << "Erreur lors de l'insertion : ";
-        qDebug() << query.lastError().text();
+//        qDebug() << "Erreur lors de l'insertion : ";
+//        qDebug() << query.lastError().text();
         return false;
     }
     else

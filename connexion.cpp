@@ -27,15 +27,12 @@ void Connexion::demanderConnexion(){
     QString password = ui->leMdp->text();
 
     // On va récupérer le mot de passe de la BDD
-    QSqlQuery query;
-    QString formule = "SELECT mdp FROM Utilisateurs WHERE utilisateur = :user";
-
-    // Filtre
-    query.prepare(formule);
-    query.bindValue(":user", username);
+    QSqlQuery query("SELECT mdp FROM Identifiants WHERE utilisateur = 'sam';");
+    query.exec();
 
     // Vérification si le mot de passe est correcte
-    if(query.value(0) == password){
+    qDebug() << query.value(0);
+    if(query.value(0).toString() == password){
         qDebug() << "ok";
     }
     // Si le mot de passe est incorrect, on affiche un message d'erreur

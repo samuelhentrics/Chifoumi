@@ -30,7 +30,7 @@ private:
     ChifoumiVue *chifoumi = new ChifoumiVue(); //
 
 private slots:
-    void validerConnexion();
+    void connexion();
     // permet de se connecter
 };
 

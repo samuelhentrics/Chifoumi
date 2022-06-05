@@ -60,8 +60,8 @@ bool Database::insertTable(const QVariantList &data)
     query.bindValue(":utilisateur", data[0].toString());
     query.bindValue(":mdp", data[1].toString());
     if(!query.exec()){
-//        qDebug() << "Erreur lors de l'insertion : ";
-//        qDebug() << query.lastError().text();
+        //        qDebug() << "Erreur lors de l'insertion : ";
+        //        qDebug() << query.lastError().text();
         return false;
     }
     else
@@ -71,19 +71,14 @@ bool Database::insertTable(const QVariantList &data)
 bool Database::verifierMotDePasse(QString nom, QString mdp){
     // On récupére le mot de passe de la BDD
     QSqlQuery query;
-    query.prepare("SELECT * FROM Identifiants WHERE nom=':name'");
-    qDebug() << nom;
-    query.bindValue(":name", nom);
-    query.exec();
-    qDebug() << query.value(0) << query.value(1);
-    // On va lire le mot de passe et déterminer si celui-ci est correcte selon le nom
-    query.first();
+    query.exec("SELECT * FROM Identifiants");
 
-    qDebug() << query.value(0) << query.value(1);
-    if(query.value(0).toString() == nom && query.value(1).toString()==mdp){
-        return true;
+    // On va vérifier s'il existe dans notre base, le nom d'utilisateur ainsi
+    // que la correspondance du mot de passe si celui-ci existe
+    for (int i =0; query.next(); i++){
+        if(query.value(0).toString() == nom && query.value(1).toString()==mdp){
+            return true;
+        }
     }
-    else{
-        return false;
-    }
+    return false;
 }

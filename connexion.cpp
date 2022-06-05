@@ -37,8 +37,8 @@ void Connexion::demanderConnexion(){
     }
     // Si le mot de passe est incorrect, on affiche un message d'erreur
     else{
-        QMessageBox::information(this, "Mot de passe incorrect",
-                                 "Votre mot de passe semble incorrect, veuillez réessayer.");
+        QMessageBox::information(this, "Identifiant incorrect",
+                                 "Votre identifiant semble incorrect, veuillez réessayer.");
     }
 }
 

@@ -9,7 +9,6 @@
 #define CONNEXION_H
 
 #include <QDialog>
-#include "chifoumivue.h"
 #include "database.h"
 
 namespace Ui {
@@ -23,11 +22,16 @@ class Connexion : public QDialog
 public:
     explicit Connexion(QWidget *parent = nullptr);
     ~Connexion();
+    bool infoConnexion();
+    /* Retourne vrai si le joueur est connecté, faux si celui-ci ne l'est pas */
 
 private:
     Ui::Connexion *ui;
-    Database *db = new Database(); //
-    ChifoumiVue *chifoumi = new ChifoumiVue(); //
+    bool estConnecte;
+    /* Statut du joueur si celui-ci est connecté */
+    Database *db = new Database();
+    /* Base de données */
+
 
 private slots:
     void demanderConnexion();

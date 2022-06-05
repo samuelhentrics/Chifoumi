@@ -20,24 +20,36 @@ ChifoumiVue::ChifoumiVue(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::ChifoumiVue)
 {
-    // Paramètrage de base pour une partie
-    nomJoueur="Vous"; // Si la jouer n'a pas saisie son nom dans les paramètres
-    scoreGagnant=5; // Score à atteindre par défaut afin de gagner
-    tempsPartie=30; // temps limite par défaut afin que la partie se termine
     ui->setupUi(this);
+    this->hide();
 
-    // Activation des connexions pour les boutons
-    connect(ui->bNouvellePartie, SIGNAL(clicked()), this, SLOT(lancerPartie()));
-    connect(ui->actionQuitter, SIGNAL(triggered()), QCoreApplication::instance(), SLOT(quit()), Qt::QueuedConnection);
-    connect(ui->actionA_propos_de, SIGNAL(triggered()), this, SLOT(aProposDe()));
-    connect(ui->actionParam_trage, SIGNAL(triggered()), this, SLOT(parametrerJeu()));
-    connect(ui->bPause, SIGNAL(clicked()), this, SLOT(majPause()));
+    // Tant que le joueur n'est pas connecté, on l'invite à se connecter
+    conn->exec();
 
-    // Activation des connexions pour les événements afin de jouer
-    connect(ui->bCiseau, SIGNAL(pressed()), this, SLOT(jouerCiseau()));
-    connect(ui->bPapier, SIGNAL(pressed()), this, SLOT(jouerPapier()));
-    connect(ui->bPierre, SIGNAL(pressed()), this, SLOT(jouerPierre()));
-    connect(timer, SIGNAL(timeout()), this, SLOT(majTemps()));
+    if (!conn->infoConnexion()){
+        close();
+    }
+    else{
+
+        this->show();
+        // Paramètrage de base pour une partie
+        nomJoueur="Vous"; // Si la jouer n'a pas saisie son nom dans les paramètres
+        scoreGagnant=5; // Score à atteindre par défaut afin de gagner
+        tempsPartie=30; // temps limite par défaut afin que la partie se termine
+
+        // Activation des connexions pour les boutons
+        connect(ui->bNouvellePartie, SIGNAL(clicked()), this, SLOT(lancerPartie()));
+        connect(ui->actionQuitter, SIGNAL(triggered()), QCoreApplication::instance(), SLOT(quit()), Qt::QueuedConnection);
+        connect(ui->actionA_propos_de, SIGNAL(triggered()), this, SLOT(aProposDe()));
+        connect(ui->actionParam_trage, SIGNAL(triggered()), this, SLOT(parametrerJeu()));
+        connect(ui->bPause, SIGNAL(clicked()), this, SLOT(majPause()));
+
+        // Activation des connexions pour les événements afin de jouer
+        connect(ui->bCiseau, SIGNAL(pressed()), this, SLOT(jouerCiseau()));
+        connect(ui->bPapier, SIGNAL(pressed()), this, SLOT(jouerPapier()));
+        connect(ui->bPierre, SIGNAL(pressed()), this, SLOT(jouerPierre()));
+        connect(timer, SIGNAL(timeout()), this, SLOT(majTemps()));
+    }
 }
 
 ChifoumiVue::~ChifoumiVue()

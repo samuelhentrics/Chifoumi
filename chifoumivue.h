@@ -11,6 +11,7 @@
 #include <QMainWindow>
 #include <QTimer>
 #include "chifoumi.h"
+#include "connexion.h"
 #include "parametrage.h"
 #include <QMessageBox>
 
@@ -38,6 +39,7 @@ private:
         Chifoumi *leJeu = new Chifoumi();
         QString nomJoueur; // nom du joueur
         QTimer *timer = new QTimer(this); // timer qui s'enclenche toutes les 1 secondes
+        Connexion *conn = new Connexion(this);
         Parametrage *param = new Parametrage(this);; // Boite de dialogue pour parametrer le jeu
         QMessageBox* mBox = new QMessageBox(); // Permet l'affichage de message d'information (gagnant par exemple)
 

@@ -41,8 +41,7 @@ bool Database::createTable()
     // le joueur n'existe pas.
 
     qDebug() << "Tentative ajout Elliot";
-    QSqlQuery insertQuery("insert into identifiants values ('elliot','test');");
-    if (insertQuery.exec()){
+    if (query.exec("insert into Identifiants values ('Elliot', 'test');")){
         qDebug() << "Ajout de l'utilisateur principal, OK";
     }
     else {
@@ -71,7 +70,7 @@ bool Database::insertTable(const QVariantList &data)
 
 bool Database::verifierMotDePasse(QString nom, QString mdp){
     // On va récupérer le mot de passe de la BDD
-    QSqlQuery query("SELECT mdp FROM identifiants");
+    QSqlQuery query("SELECT * FROM identifiants");
     query.exec();
 
     if(query.value(0).toString() == mdp){

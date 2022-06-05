@@ -21,17 +21,22 @@ ChifoumiVue::ChifoumiVue(QWidget *parent)
     , ui(new Ui::ChifoumiVue)
 {
     ui->setupUi(this);
+    // On cache le jeu tant que l'utilisateur ne s'est pas authentifier
     this->hide();
 
     // Tant que le joueur n'est pas connecté, on l'invite à se connecter
+    // pour cela, on ouvre la fenêtre de connexion
     conn->exec();
 
     if (!conn->infoConnexion()){
+        // Dans le cas, où l'utilisateur n'a pas voulu se connecter,
+        // on ferme le jeu
         close();
     }
     else{
-
+        // Sinon, si l'utilisateur s'est connecté, on affiche la page du jeu
         this->show();
+
         // Paramètrage de base pour une partie
         nomJoueur=conn->getNom(); // Nom de l'utilisateur
         ui->lJoueur->setText(nomJoueur); // Affichage du nom du joueur
@@ -266,14 +271,13 @@ void ChifoumiVue::jouerPartie(Chifoumi::UnCoup coup){
 
     emit finirPartie();
 
-
 }
 
 void ChifoumiVue::aProposDe(){
     QMessageBox* mBoxInfo = new QMessageBox();
     mBoxInfo->setWindowTitle("A propos de cette application");
-    mBoxInfo->setText("Version 6.0.\n"
-                      "Dernière modification le : 29/05/2022.\n"
+    mBoxInfo->setText("Version 7.0.\n"
+                      "Dernière modification le : 05/06/2022.\n"
                       "Crée par Samuel HENTRICS LOISTINE, Cédric ETCHEPARE, Ahmed FAKHFAKH");
     mBoxInfo->show();
 }

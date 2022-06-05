@@ -11,9 +11,10 @@ Connexion::Connexion(QWidget *parent) :
 
     ui->setupUi(this);
 
-
+    // Activation des événements
     connect(ui->bEntrer, SIGNAL(clicked()), this, SLOT(demanderConnexion()));
 
+    // Tentative de connexion (et restauration si nécéssaire) à
     if (!db->restoreDatabase()){
         ui->bEntrer->setDisabled(true);
         ui->lError->setText("Erreur à la connexion de la BDD.\nVérifiez le DSN.");
@@ -31,14 +32,8 @@ void Connexion::demanderConnexion(){
     QString username = ui->leUtilisateur->text();
     QString password = ui->leMdp->text();
 
-    // On va récupérer le mot de passe de la BDD
-    QSqlQuery query("SELECT mdp FROM Identifiants WHERE utilisateur='sam';");
-    query.exec();
-
-    // Vérification si le mot de passe est correcte
-    qDebug() << query.value(0);
-    if(query.value(0).toString() == password){
-        qDebug() << "pas bon";
+    // Tentative de connexion
+    if(db->verifierMotDePasse(username, password)){
         estConnecte=true;
         close();
     }

@@ -26,7 +26,9 @@ public:
     void closeDatabase();
     // Permet de fermer la base de donnée
     bool restoreDatabase();
-    // // renvoie faux si impossible d'acceder la bdd et vrai sinon
+    // Retourne faux si impossible d'acceder la bdd et vrai sinon
+    bool verifierMotDePasse(QString, QString);
+    /* Retourne vrai si le mot de passe est celui de l'utilisateur, faux sinon. */
 
 private:
     QSqlDatabase mydb;

@@ -25,6 +25,7 @@ void Database::closeDatabase()
 bool Database::restoreDatabase(){
     bool ok = openDatabase();
     if(ok){
+        qDebug() << "Tentative création bdd";
         createTable();
     }
     return ok;
@@ -34,26 +35,21 @@ bool Database::restoreDatabase(){
 bool Database::createTable()
 {
     QSqlQuery query;
-    bool ok =query.exec("create table Identifiants (utilisateur varchar(5) primary key, mdp varchar(30))");
-    if (ok)
-    {
-        //qDebug() <<"table crée";
-        return true;
-    }
-    else
-    {
-        //qDebug() <<"table existante";
-        return false;
-    }
+    bool ok =query.exec("create table Identifiants (utilisateur varchar(25) primary key, mdp varchar(30));");
 
     // On va insérer un joueur de base lors de la création de la base/si la base existe mais
     // le joueur n'existe pas.
-    QSqlQuery insertQuery("insert into Utilisateurs values ('elliot','test')");
+
+    qDebug() << "Tentative ajout Elliot";
+    QSqlQuery insertQuery("insert into identifiants values ('elliot','test');");
     if (insertQuery.exec()){
         qDebug() << "Ajout de l'utilisateur principal, OK";
     }
+    else {
+        qDebug() << "Erreur lors de l'ajout d'Elliot.";
+    }
 
-
+    return ok;
 }
 
 bool Database::insertTable(const QVariantList &data)
@@ -71,4 +67,17 @@ bool Database::insertTable(const QVariantList &data)
     }
     else
         return true;
+}
+
+bool Database::verifierMotDePasse(QString nom, QString mdp){
+    // On va récupérer le mot de passe de la BDD
+    QSqlQuery query("SELECT mdp FROM identifiants");
+    query.exec();
+
+    if(query.value(0).toString() == mdp){
+        return true;
+    }
+    else{
+        return false;
+    }
 }

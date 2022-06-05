@@ -10,7 +10,6 @@ Connexion::Connexion(QWidget *parent) :
     estConnecte = false; // Par défaut, le joueur n'est pas connecté
 
     ui->setupUi(this);
-
     // Activation des événements
     connect(ui->bEntrer, SIGNAL(clicked()), this, SLOT(demanderConnexion()));
 
@@ -19,7 +18,6 @@ Connexion::Connexion(QWidget *parent) :
         ui->bEntrer->setDisabled(true);
         ui->lError->setText("Erreur à la connexion de la BDD.\nVérifiez le DSN.");
     }
-
 }
 
 Connexion::~Connexion()

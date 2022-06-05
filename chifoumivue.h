@@ -41,6 +41,7 @@ private:
     QTimer *timer = new QTimer(this); // timer qui s'enclenche toutes les 1 secondes
     Connexion *conn = new Connexion(this);
     Parametrage *param = new Parametrage(this);; // Boite de dialogue pour parametrer le jeu
+    Database *db = new Database(); // Base de données du jeu
     QMessageBox* mBox = new QMessageBox(); // Permet l'affichage de message d'information (gagnant par exemple)
 
     ///* Procédures publiques de la vue

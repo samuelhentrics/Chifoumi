@@ -27,8 +27,11 @@ public:
     // Permet de fermer la base de donnée
     bool restoreDatabase();
     // Retourne faux si impossible d'acceder la bdd et vrai sinon
-    bool verifierMotDePasse(QString, QString);
+    bool verifierMotDePasse(QString nom, QString mdp);
     /* Retourne vrai si le mot de passe est celui de l'utilisateur, faux sinon. */
+    bool updateNomUtilisateur(QString ancienNom, QString nouveauNom);
+    /* Essaye de modifier le nom d'un utilisateur, retourne vrai si cela a marché
+     * faux, si le nom d'utilisateur existe déjà*/
 
 private:
     QSqlDatabase mydb;

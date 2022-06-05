@@ -293,8 +293,16 @@ void ChifoumiVue::parametrerJeu(){
     switch(retour)
     {
     case QDialog::Accepted :
-        ui->lJoueur->setText(QString(param->getNom())); // On change le label avec le nom saisie par l'utilisateur
-        nomJoueur=param->getNom(); // on change la valeur du variable nomJoueur par le nom saisie par l'utilisateur
+        // On vérifie s'il est possible de changer de nom (ex : nom d'utilisateur non pris)
+        if (db->updateNomUtilisateur(nomJoueur, param->getNom())){
+            ui->lJoueur->setText(QString(param->getNom())); // On change le label avec le nom saisie par l'utilisateur
+            nomJoueur=param->getNom(); // on change la valeur du variable nomJoueur par le nom saisie par l'utilisateur
+        }
+        else{
+            QMessageBox::information(this, "Nom d'utilisateur déjà pris",
+                                     "Oops, ce nom d'utilisateur est déjà pris."
+                                     "\nEssayez avec un autre nom d'utilisateur.");
+        }
 
         ui->lGagnantScore->setText(QString::number(param->getPoints())); // On change le label avec le nombre de points saisie par l'utilisateur
         scoreGagnant=param->getPoints(); // on change la valeur du variable GagnantScore par le nombre de points saisie par l'utilisateur

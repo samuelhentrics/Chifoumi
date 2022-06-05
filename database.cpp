@@ -69,11 +69,18 @@ bool Database::insertTable(const QVariantList &data)
 }
 
 bool Database::verifierMotDePasse(QString nom, QString mdp){
-    // On va récupérer le mot de passe de la BDD
-    QSqlQuery query("SELECT * FROM identifiants");
+    // On récupére le mot de passe de la BDD
+    QSqlQuery query;
+    query.prepare("SELECT * FROM Identifiants WHERE nom=':name'");
+    qDebug() << nom;
+    query.bindValue(":name", nom);
     query.exec();
+    qDebug() << query.value(0) << query.value(1);
+    // On va lire le mot de passe et déterminer si celui-ci est correcte selon le nom
+    query.first();
 
-    if(query.value(0).toString() == mdp){
+    qDebug() << query.value(0) << query.value(1);
+    if(query.value(0).toString() == nom && query.value(1).toString()==mdp){
         return true;
     }
     else{

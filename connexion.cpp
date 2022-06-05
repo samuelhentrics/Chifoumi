@@ -49,6 +49,11 @@ void Connexion::demanderConnexion(){
     }
 }
 
+QString Connexion::getNom(){
+    return ui->leUtilisateur->text();
+}
+
+
 bool Connexion::infoConnexion(){
     return estConnecte;
 }

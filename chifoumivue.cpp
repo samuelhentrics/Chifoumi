@@ -33,7 +33,8 @@ ChifoumiVue::ChifoumiVue(QWidget *parent)
 
         this->show();
         // Paramètrage de base pour une partie
-        nomJoueur="Vous"; // Si la jouer n'a pas saisie son nom dans les paramètres
+        nomJoueur=conn->getNom(); // Nom de l'utilisateur
+        ui->lJoueur->setText(nomJoueur); // Affichage du nom du joueur
         scoreGagnant=5; // Score à atteindre par défaut afin de gagner
         tempsPartie=30; // temps limite par défaut afin que la partie se termine
 

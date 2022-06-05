@@ -22,9 +22,15 @@ class Connexion : public QDialog
 public:
     explicit Connexion(QWidget *parent = nullptr);
     ~Connexion();
+
+///* Procédures publiques de la vue
+public:
+    QString getNom();
+    /* Retourne le nom d'utilisateur saisi dans le formulaire */
     bool infoConnexion();
     /* Retourne vrai si le joueur est connecté, faux si celui-ci ne l'est pas */
 
+///* Attributs privés de la vue
 private:
     Ui::Connexion *ui;
     bool estConnecte;
@@ -32,10 +38,10 @@ private:
     Database *db = new Database();
     /* Base de données */
 
-
+///* Slots privés de la vue
 private slots:
     void demanderConnexion();
-    // permet de se connecter
+    // Permet de vérifier si l'utilisateur a renseigné les bonnes informations de connexion
 };
 
 #endif // CONNEXION_H

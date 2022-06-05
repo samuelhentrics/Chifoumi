@@ -31,61 +31,61 @@ public:
 private:
     Ui::ChifoumiVue *ui;
 
-         ///* Attributs privés de la vue
-     private:
-        unsigned int scoreGagnant;  // score à atteindre pour gagner
-        unsigned int tempsPartie; // Temps par défaut avant la fin d'une partie
-        unsigned int tempsRestant; // Temps restant pour la partie
-        Chifoumi *leJeu = new Chifoumi();
-        QString nomJoueur; // nom du joueur
-        QTimer *timer = new QTimer(this); // timer qui s'enclenche toutes les 1 secondes
-        Connexion *conn = new Connexion(this);
-        Parametrage *param = new Parametrage(this);; // Boite de dialogue pour parametrer le jeu
-        QMessageBox* mBox = new QMessageBox(); // Permet l'affichage de message d'information (gagnant par exemple)
+    ///* Attributs privés de la vue
+private:
+    unsigned int scoreGagnant;  // score à atteindre pour gagner
+    unsigned int tempsPartie; // Temps par défaut avant la fin d'une partie
+    unsigned int tempsRestant; // Temps restant pour la partie
+    Chifoumi *leJeu = new Chifoumi();
+    QString nomJoueur; // nom du joueur
+    QTimer *timer = new QTimer(this); // timer qui s'enclenche toutes les 1 secondes
+    Connexion *conn = new Connexion(this);
+    Parametrage *param = new Parametrage(this);; // Boite de dialogue pour parametrer le jeu
+    QMessageBox* mBox = new QMessageBox(); // Permet l'affichage de message d'information (gagnant par exemple)
 
-        ///* Procédures publiques de la vue
-    public:
-        QString getNomJoueur();
-            /* permet de récupérer le nom du joueur dans le jeu */
-        unsigned int getScoreMaxJeu();
-            /* permet de récupérer le score à atteindre pour gagner
+    ///* Procédures publiques de la vue
+public:
+    QString getNomJoueur();
+    /* permet de récupérer le nom du joueur dans le jeu */
+    unsigned int getScoreMaxJeu();
+    /* permet de récupérer le score à atteindre pour gagner
              * une partie dans le jeu */
-        unsigned int getTempsMaxJeu();
-            /* permet de récupérer temps maximum pour gagner
+    unsigned int getTempsMaxJeu();
+    /* permet de récupérer temps maximum pour gagner
              * une partie dans le jeu */
 
-        ///* Procédures privées de la vue
-    private:
-       void desactiver();
-           /* permet de désactiver les boutons, le timer
+    ///* Procédures privées de la vue
+private:
+    void desactiver();
+    /* permet de désactiver les boutons, le timer
             */
 
-       ///* Slots privés de la vue
-    private slots:
-        void lancerPartie();
-            /* Permet de lancer une partie entre le joueur et la machine
+    ///* Slots privés de la vue
+private slots:
+    void lancerPartie();
+    /* Permet de lancer une partie entre le joueur et la machine
             */
-        void jouerCiseau();
-            /* Le joueur décide de jouer ciseau */
-        void jouerPapier();
-            /* Le joueur décide de jouer papier */
-        void jouerPierre();
-            /* Le joueur décide de jouer pierre */
-        void jouerPartie(Chifoumi::UnCoup coup);
-            /* Permet de déterminer le gagnant et met à jour l'interface
+    void jouerCiseau();
+    /* Le joueur décide de jouer ciseau */
+    void jouerPapier();
+    /* Le joueur décide de jouer papier */
+    void jouerPierre();
+    /* Le joueur décide de jouer pierre */
+    void jouerPartie(Chifoumi::UnCoup coup);
+    /* Permet de déterminer le gagnant et met à jour l'interface
               à partir d'un coup (coup) donné par le joueur */
-        void aProposDe();
-            /* Permet l'affichage "A propos de..." pour l'utilisateur */
-        void finirPartie();
-            /* Permet de finir la partie lorsque un joueur a atteint 5 points */
-        void majTemps();
-            /* Met à jour le temps restant lors d'une partie et peut arreter la partie
+    void aProposDe();
+    /* Permet l'affichage "A propos de..." pour l'utilisateur */
+    void finirPartie();
+    /* Permet de finir la partie lorsque un joueur a atteint 5 points */
+    void majTemps();
+    /* Met à jour le temps restant lors d'une partie et peut arreter la partie
             si le compteur est à zero*/
-        void majPause();
-            /* Met le jeu en pause lorsque l'utilisateur demande à mettre le jeu en pause.
+    void majPause();
+    /* Met le jeu en pause lorsque l'utilisateur demande à mettre le jeu en pause.
              * Ou alors reprend la partie si le timer est inactif*/
-        void parametrerJeu();
-            /* Procédure permettant à l'utilisateur de paramètrer le jeu
+    void parametrerJeu();
+    /* Procédure permettant à l'utilisateur de paramètrer le jeu
             * (son nom, la durée d'une partie, le nombre de points pour gagner) */
 
 };

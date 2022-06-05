@@ -299,7 +299,7 @@ void ChifoumiVue::parametrerJeu(){
             nomJoueur=param->getNom(); // on change la valeur du variable nomJoueur par le nom saisie par l'utilisateur
         }
         else{
-            QMessageBox::information(this, "Nom d'utilisateur déjà pris",
+            mBox->information(this, "Nom d'utilisateur déjà pris",
                                      "Oops, ce nom d'utilisateur est déjà pris."
                                      "\nEssayez avec un autre nom d'utilisateur.");
         }

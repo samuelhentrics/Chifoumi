@@ -140,6 +140,8 @@ void ChifoumiVue::finirPartie()
         mBox->information(this,
                           tr("Fin de partie"),
                           "Bravo "+QString(nomJoueur)+" ! Vous gagnez en "+QString::number(scoreGagnant)+" points.");
+        // Mettre le résultat en BDD
+        db->insertResultat(this->getNomJoueur(),leJeu->getScoreJoueur(), leJeu->getScoreMachine());
     }
 
     //On vérifie si la machine à gagnée.
@@ -151,6 +153,8 @@ void ChifoumiVue::finirPartie()
         mBox->information(this,
                           tr("Fin de partie"),
                           "Bravo la machine ! Vous gagnez en "+QString::number(scoreGagnant)+" points.");
+        // Mettre le résultat en BDD
+        db->insertResultat(this->getNomJoueur(),leJeu->getScoreJoueur(), leJeu->getScoreMachine());
     }
 
     // On vérifie si le timer est à zéro
@@ -172,6 +176,8 @@ void ChifoumiVue::finirPartie()
         mBox->information(this,
                           tr("Fin de partie"),
                           message);
+        // Mettre le résultat en BDD
+        db->insertResultat(this->getNomJoueur(),leJeu->getScoreJoueur(), leJeu->getScoreMachine());
     }
 
 }

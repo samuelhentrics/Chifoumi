@@ -38,15 +38,27 @@ bool Database::createTable()
     bool ok =query.exec("create table Utilisateurs (id int(4) primary key NOT NULL AUTO_INCREMENT,"
                         "nom varchar(25) NOT NULL, mdp varchar(30) NOT NULL);");
 
+    query.exec("create table Resultats (id int(4) primary key NOT NULL AUTO_INCREMENT,"
+               "horodatage datetime default CURRENT_TIMESTAMP,"
+               "joueur_id int(4),"
+               "scoreJoueur int(4) not null,"
+               "scoreMachine int(4) not null,"
+               "CONSTRAINT FK_Joueur FOREIGN KEY (joueur_id) REFERENCES Utilisateurs(id));");
+
     // On va insérer un joueur de base lors de la création de la base/si la base existe mais
     // le joueur n'existe pas.
 
     //qDebug() << "Tentative ajout Elliot";
-    if (query.exec("insert into Utilisateurs (nom, mdp) values ('Elliot', 'test');")){
-        //qDebug() << "Ajout de l'utilisateur principal, OK";
-    }
-    else {
-        //qDebug() << "Erreur lors de l'ajout d'Elliot.";
+    query.exec("SELECT COUNT(*) FROM Utilisateurs");
+    query.next();
+    qDebug() << query.value(0).toInt();
+    if (query.value(0).toInt()==0){
+        if (query.exec("insert into Utilisateurs (nom, mdp) values ('Elliot', 'test');")){
+            //qDebug() << "Ajout de l'utilisateur principal, OK";
+        }
+        else {
+            //qDebug() << "Erreur lors de l'ajout d'Elliot.";
+        }
     }
 
     return ok;
@@ -98,8 +110,8 @@ bool Database::updateNomUtilisateur(QString ancienNom, QString nouveauNom){
 
     // Sinon, on effectue la modification
     QString formuleModif="update Utilisateurs "
-                       "set nom=:nouveauNom"
-                       " where nom=:ancienNom";
+                         "set nom=:nouveauNom"
+                         " where nom=:ancienNom";
 
     // On va mettre les infos que l'on souhaite
     query.prepare(formuleModif);
@@ -114,4 +126,26 @@ bool Database::updateNomUtilisateur(QString ancienNom, QString nouveauNom){
         //qDebug() << "Modification du nom d'utilisateur OK";
         return true;
     }
+}
+
+bool Database::insertResultat(QString nom, unsigned int scoreJoueur, unsigned int scoreMachine){
+    QSqlQuery query;
+    unsigned int numId;
+    query.exec("SELECT * FROM Utilisateurs");
+
+    // On va récupérer l'identifiant du joueur
+    for (int i =0; query.next(); i++){
+        if(query.value(1).toString() == nom){
+            numId = query.value(0).toInt();
+        }
+    }
+
+    // On va insérer le résultat
+    QString insertion = "INSERT INTO Resultats (joueur_id, scoreJoueur, scoreMachine)"
+                        "VALUES (:joueur_id, :scoreJoueur, :scoreMachine)";
+    query.prepare(insertion);
+    query.bindValue(":joueur_id", numId);
+    query.bindValue(":scoreJoueur", scoreJoueur);
+    query.bindValue(":scoreMachine", scoreMachine);
+    return query.exec();
 }

@@ -32,6 +32,8 @@ public:
     bool updateNomUtilisateur(QString ancienNom, QString nouveauNom);
     /* Essaye de modifier le nom d'un utilisateur, retourne vrai si cela a marché
      * faux, si le nom d'utilisateur existe déjà*/
+    bool insertResultat(QString nom, unsigned int scoreJoueur, unsigned int scoreMachine);
+    /* Permet d'inserer les résultats d'une partie finie */
 
 private:
     QSqlDatabase mydb;

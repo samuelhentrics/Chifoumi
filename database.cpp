@@ -35,13 +35,14 @@ bool Database::restoreDatabase(){
 bool Database::createTable()
 {
     QSqlQuery query;
-    bool ok =query.exec("create table Utilisateurs (nom varchar(25) primary key, mdp varchar(30));");
+    bool ok =query.exec("create table Utilisateurs (id int(4) primary key NOT NULL AUTO_INCREMENT,"
+                        "nom varchar(25) NOT NULL, mdp varchar(30) NOT NULL);");
 
     // On va insérer un joueur de base lors de la création de la base/si la base existe mais
     // le joueur n'existe pas.
 
     //qDebug() << "Tentative ajout Elliot";
-    if (query.exec("insert into Utilisateurs values ('Elliot', 'test');")){
+    if (query.exec("insert into Utilisateurs (nom, mdp) values ('Elliot', 'test');")){
         //qDebug() << "Ajout de l'utilisateur principal, OK";
     }
     else {
@@ -54,7 +55,7 @@ bool Database::createTable()
 bool Database::insertTable(const QVariantList &data)
 {
     QSqlQuery query;
-    QString insertions="insert into Utilisateurs "
+    QString insertions="insert into Utilisateurs (nom, mdp) "
                        " values(:nom, :mdp);";
     query.prepare(insertions);
     query.bindValue(":nom", data[0].toString());
@@ -76,7 +77,7 @@ bool Database::verifierMotDePasse(QString nom, QString mdp){
     // On va vérifier s'il existe dans notre base, le nom d'utilisateur ainsi
     // que la correspondance du mot de passe si celui-ci existe
     for (int i =0; query.next(); i++){
-        if(query.value(0).toString() == nom && query.value(1).toString()==mdp){
+        if(query.value(1).toString() == nom && query.value(2).toString()==mdp){
             return true;
         }
     }
@@ -89,7 +90,7 @@ bool Database::updateNomUtilisateur(QString ancienNom, QString nouveauNom){
 
     // On va vérifier s'il existe dans notre base, le nouveau nom d'utilisateur
     for (int i =0; query.next(); i++){
-        if(query.value(0).toString() == nouveauNom){
+        if(query.value(1).toString() == nouveauNom){
             //qDebug() << "Nouveau nom déjà existant";
             return false;
         }

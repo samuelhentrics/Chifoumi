@@ -36,7 +36,7 @@ bool Database::createTable()
 {
     QSqlQuery query;
     bool ok =query.exec("create table Utilisateurs (id int(4) PRIMARY KEY NOT NULL AUTO_INCREMENT,"
-                        "nom VARCHAR2(25) NOT NULL, mdp VARCHAR2(30) NOT NULL);");
+                        "nom VARCHAR(25) NOT NULL, mdp VARCHAR(30) NOT NULL);");
 
     query.exec("create table Resultats (id int(4) PRIMARY KEY NOT NULL AUTO_INCREMENT,"
                "horodatage DATETIME DEFAULT CURRENT_TIMESTAMP,"

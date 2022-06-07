@@ -106,11 +106,10 @@ Pour plus d'informations, se référer au docs
 - [x] v4 Le jeu se joue en X points, 5 par défaut.
 - [x] v5 Le jeu se joue en temps limité, 30 secondes par défaut.
 - [x] v6 L’utilisateur peut modifier différents paramètres avant de commencer la partie : son nom, le nombre max. de points, le temps max. à jouer
-- [ ] v7 Le nom du joueur est enregistré dans une base de données.
-- [ ] v8 A la fin de la partie, le système enregistre dans la base de données le résultat de la partie
+- [x] v7 Le nom du joueur est enregistré dans une base de données.
+- [x] v8 A la fin de la partie, le système enregistre dans la base de données le résultat de la partie
       (Horodatage, nomJoueurHumain, scoreJoueurHumain, joueurMachine, scoreJoueurMachine)
-- [ ] v9 Possibilité de vider la base de données
-- [ ] v10 Ajout d'une boite de dialogue affichant les résultats enregistrés (Fichier >> Résultats)
+- [x] v9 Ajout d'une boite de dialogue affichant les résultats enregistrés (Fichier >> Résultats)
 
 
 <p align="right">(<a href="#top">Retour en haut</a>)</p>

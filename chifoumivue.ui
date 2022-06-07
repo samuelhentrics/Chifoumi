@@ -96,7 +96,6 @@
            <font>
             <family>Arial</family>
             <pointsize>12</pointsize>
-            <weight>50</weight>
             <bold>false</bold>
            </font>
           </property>
@@ -117,7 +116,6 @@
            <font>
             <family>Arial</family>
             <pointsize>12</pointsize>
-            <weight>50</weight>
             <bold>false</bold>
            </font>
           </property>
@@ -477,7 +475,7 @@
       <item>
        <widget class="QPushButton" name="bNouvellePartie">
         <property name="text">
-         <string>Nouvelle partie</string>
+         <string>&amp;Nouvelle partie</string>
         </property>
         <property name="autoDefault">
          <bool>true</bool>
@@ -497,7 +495,7 @@
      <x>0</x>
      <y>0</y>
      <width>498</width>
-     <height>21</height>
+     <height>30</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuFichier">
@@ -523,7 +521,7 @@
     <string>Quitter</string>
    </property>
    <property name="shortcut">
-    <string>Alt+F3</string>
+    <string>Alt+Q</string>
    </property>
   </action>
   <action name="actionA_propos_de">
@@ -531,17 +529,23 @@
     <string>A propos de...</string>
    </property>
    <property name="shortcut">
-    <string>F1</string>
+    <string>Alt+A</string>
    </property>
   </action>
   <action name="actionParam_trage">
    <property name="text">
     <string>Paramétrage</string>
    </property>
+   <property name="shortcut">
+    <string>Alt+P</string>
+   </property>
   </action>
   <action name="actionR_sultats">
    <property name="text">
     <string>Résultats</string>
+   </property>
+   <property name="shortcut">
+    <string>Alt+R</string>
    </property>
   </action>
  </widget>

@@ -13,6 +13,7 @@
 #include "chifoumi.h"
 #include "connexion.h"
 #include "parametrage.h"
+#include "resultats.h"
 #include <QMessageBox>
 
 

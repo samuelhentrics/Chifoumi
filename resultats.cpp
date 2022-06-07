@@ -18,7 +18,9 @@ Resultats::Resultats(QWidget *parent) :
     query.exec("SELECT R.horodatage, U.nom, R.scoreJoueur, R.scoreMachine "
                "FROM Resultats R "
                "JOIN Utilisateurs U ON U.id=R.joueur_id "
-               "ORDER BY R.horodatage;");
+               "WHERE R.scoreJoueur>=R.scoreMachine "
+               "ORDER BY R.horodatage DESC "
+               "LIMIT 10;");
 
 
     for(int i = 0; query.next(); i++){
@@ -45,7 +47,9 @@ void Resultats::majTabScore(){
     query.exec("SELECT R.horodatage, U.nom, R.scoreJoueur, R.scoreMachine "
                "FROM Resultats R "
                "JOIN Utilisateurs U ON U.id=R.joueur_id "
-               "ORDER BY R.horodatage DESC;");
+               "WHERE R.scoreJoueur>R.scoreMachine "
+               "ORDER BY R.horodatage DESC "
+               "LIMIT 10;");
 
 
     for(int i = 0; query.next(); i++){

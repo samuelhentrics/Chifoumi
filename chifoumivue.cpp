@@ -282,7 +282,7 @@ void ChifoumiVue::jouerPartie(Chifoumi::UnCoup coup){
 void ChifoumiVue::aProposDe(){
     QMessageBox* mBoxInfo = new QMessageBox();
     mBoxInfo->setWindowTitle("A propos de cette application");
-    mBoxInfo->setText("Version 7.0.\n"
+    mBoxInfo->setText("Version 8.0.\n"
                       "Dernière modification le : 05/06/2022.\n"
                       "Crée par Samuel HENTRICS LOISTINE, Cédric ETCHEPARE, Ahmed FAKHFAKH");
     mBoxInfo->show();

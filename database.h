@@ -19,6 +19,7 @@
 
 class Database
 {
+    ///* Procédures publiques
 public:
     Database();
     bool openDatabase();
@@ -35,9 +36,11 @@ public:
     bool insertResultat(QString nom, unsigned int scoreJoueur, unsigned int scoreMachine);
     /* Permet d'inserer les résultats d'une partie finie */
 
+    ///* Attributs publics
 private:
     QSqlDatabase mydb;
 
+    ///* Procédures privées
 private:
     bool createTable();
     // permet de créer le table Identifiants

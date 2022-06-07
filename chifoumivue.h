@@ -14,6 +14,7 @@
 #include "connexion.h"
 #include "parametrage.h"
 #include "resultats.h"
+#include "resultats.h"
 #include <QMessageBox>
 
 
@@ -42,6 +43,7 @@ private:
     QTimer *timer = new QTimer(this); // timer qui s'enclenche toutes les 1 secondes
     Connexion *conn = new Connexion(this);
     Parametrage *param = new Parametrage(this);; // Boite de dialogue pour parametrer le jeu
+    Resultats *res = new Resultats(this);
     Database *db = new Database(); // Base de données du jeu
     QMessageBox* mBox = new QMessageBox(); // Permet l'affichage de message d'information (gagnant par exemple)
 
@@ -89,6 +91,8 @@ private slots:
     void parametrerJeu();
     /* Procédure permettant à l'utilisateur de paramètrer le jeu
             * (son nom, la durée d'une partie, le nombre de points pour gagner) */
+    void afficherTabResultats();
+    /* Procédure permettant d'afficher la liste des tableaux des anciens résultats */
 
 };
 

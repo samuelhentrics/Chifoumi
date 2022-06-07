@@ -35,14 +35,14 @@ bool Database::restoreDatabase(){
 bool Database::createTable()
 {
     QSqlQuery query;
-    bool ok =query.exec("create table Utilisateurs (id int(4) primary key NOT NULL AUTO_INCREMENT,"
-                        "nom varchar(25) NOT NULL, mdp varchar(30) NOT NULL);");
+    bool ok =query.exec("create table Utilisateurs (id int(4) PRIMARY KEY NOT NULL AUTO_INCREMENT,"
+                        "nom VARCHAR2(25) NOT NULL, mdp VARCHAR2(30) NOT NULL);");
 
-    query.exec("create table Resultats (id int(4) primary key NOT NULL AUTO_INCREMENT,"
-               "horodatage datetime default CURRENT_TIMESTAMP,"
+    query.exec("create table Resultats (id int(4) PRIMARY KEY NOT NULL AUTO_INCREMENT,"
+               "horodatage DATETIME DEFAULT CURRENT_TIMESTAMP,"
                "joueur_id int(4),"
-               "scoreJoueur int(4) not null,"
-               "scoreMachine int(4) not null,"
+               "scoreJoueur int(4) NOT NULL,"
+               "scoreMachine int(4) NOT NULL,"
                "CONSTRAINT FK_Joueur FOREIGN KEY (joueur_id) REFERENCES Utilisateurs(id));");
 
     // On va insérer un joueur de base lors de la création de la base/si la base existe mais
@@ -51,7 +51,7 @@ bool Database::createTable()
     //qDebug() << "Tentative ajout Elliot";
     query.exec("SELECT COUNT(*) FROM Utilisateurs");
     query.next();
-    qDebug() << query.value(0).toInt();
+    //qDebug() << query.value(0).toInt();
     if (query.value(0).toInt()==0){
         if (query.exec("insert into Utilisateurs (nom, mdp) values ('Elliot', 'test');")){
             //qDebug() << "Ajout de l'utilisateur principal, OK";

@@ -48,6 +48,7 @@ ChifoumiVue::ChifoumiVue(QWidget *parent)
         connect(ui->actionQuitter, SIGNAL(triggered()), QCoreApplication::instance(), SLOT(quit()), Qt::QueuedConnection);
         connect(ui->actionA_propos_de, SIGNAL(triggered()), this, SLOT(aProposDe()));
         connect(ui->actionParam_trage, SIGNAL(triggered()), this, SLOT(parametrerJeu()));
+        connect(ui->actionR_sultats, SIGNAL(triggered()), this, SLOT(afficherTabResultats()));
         connect(ui->bPause, SIGNAL(clicked()), this, SLOT(majPause()));
 
         // Activation des connexions pour les événements afin de jouer
@@ -328,3 +329,7 @@ void ChifoumiVue::parametrerJeu(){
     }
 }
 
+void ChifoumiVue::afficherTabResultats(){
+    res->majTabScore();
+    res->exec();
+}

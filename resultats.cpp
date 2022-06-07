@@ -15,7 +15,7 @@ Resultats::Resultats(QWidget *parent) :
     // On ajoute tous les résultats dans le tableau
 
     QSqlQuery query;
-    query.exec("SELECT R.horodatage, U.nom, R.scoreJoueur, R.scoreMachine "
+    query.exec("SELECT DATE(R.horodatage), TIME(R.horodatage), U.nom, R.scoreJoueur, R.scoreMachine "
                "FROM Resultats R "
                "JOIN Utilisateurs U ON U.id=R.joueur_id "
                "WHERE R.scoreJoueur>=R.scoreMachine "
@@ -27,8 +27,9 @@ Resultats::Resultats(QWidget *parent) :
         ui->tableWidget->insertRow(i);
         ui->tableWidget->setItem(i,0,new QTableWidgetItem(query.value(0).toString()));
         ui->tableWidget->setItem(i,1,new QTableWidgetItem(query.value(1).toString()));
-        ui->tableWidget->setItem(i,2,new QTableWidgetItem(QString::number(query.value(2).toInt())));
+        ui->tableWidget->setItem(i,2,new QTableWidgetItem(query.value(2).toString()));
         ui->tableWidget->setItem(i,3,new QTableWidgetItem(QString::number(query.value(3).toInt())));
+        ui->tableWidget->setItem(i,4,new QTableWidgetItem(QString::number(query.value(4).toInt())));
     }
 
 }
@@ -43,11 +44,12 @@ void Resultats::majTabScore(){
     ui->tableWidget->setRowCount(0);
 
     // On ajoute tous les résultats dans le tableau
+
     QSqlQuery query;
-    query.exec("SELECT R.horodatage, U.nom, R.scoreJoueur, R.scoreMachine "
+    query.exec("SELECT DATE(R.horodatage), TIME(R.horodatage), U.nom, R.scoreJoueur, R.scoreMachine "
                "FROM Resultats R "
                "JOIN Utilisateurs U ON U.id=R.joueur_id "
-               "WHERE R.scoreJoueur>R.scoreMachine "
+               "WHERE R.scoreJoueur>=R.scoreMachine "
                "ORDER BY R.horodatage DESC "
                "LIMIT 10;");
 
@@ -56,7 +58,8 @@ void Resultats::majTabScore(){
         ui->tableWidget->insertRow(i);
         ui->tableWidget->setItem(i,0,new QTableWidgetItem(query.value(0).toString()));
         ui->tableWidget->setItem(i,1,new QTableWidgetItem(query.value(1).toString()));
-        ui->tableWidget->setItem(i,2,new QTableWidgetItem(QString::number(query.value(2).toInt())));
+        ui->tableWidget->setItem(i,2,new QTableWidgetItem(query.value(2).toString()));
         ui->tableWidget->setItem(i,3,new QTableWidgetItem(QString::number(query.value(3).toInt())));
+        ui->tableWidget->setItem(i,4,new QTableWidgetItem(QString::number(query.value(4).toInt())));
     }
 }

@@ -9,20 +9,20 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>500</width>
-    <height>300</height>
+    <width>900</width>
+    <height>500</height>
    </rect>
   </property>
   <property name="minimumSize">
    <size>
-    <width>500</width>
-    <height>300</height>
+    <width>900</width>
+    <height>500</height>
    </size>
   </property>
   <property name="maximumSize">
    <size>
-    <width>500</width>
-    <height>300</height>
+    <width>900</width>
+    <height>500</height>
    </size>
   </property>
   <property name="windowTitle">
@@ -37,7 +37,6 @@
      <property name="font">
       <font>
        <pointsize>12</pointsize>
-       <weight>75</weight>
        <bold>true</bold>
       </font>
      </property>
@@ -54,6 +53,11 @@
      <column>
       <property name="text">
        <string>Date</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Heure</string>
       </property>
      </column>
      <column>

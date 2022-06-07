@@ -14,19 +14,22 @@ SOURCES += \
     database.cpp \
     main.cpp \
     chifoumi.cpp \
-    parametrage.cpp
+    parametrage.cpp \
+    resultats.cpp
 
 HEADERS += \
     chifoumi.h \
     chifoumivue.h \
     connexion.h \
     database.h \
-    parametrage.h
+    parametrage.h \
+    resultats.h
 
 FORMS += \
     chifoumivue.ui \
     connexion.ui \
-    parametrage.ui
+    parametrage.ui \
+    resultats.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

@@ -63,6 +63,8 @@
   
 Ce projet reprend l'idée du jeu Chifoumi. Ce projet a été fait en BUT Informatique à l'IUT de Bayonne et du Pays Basque durant le semestre 2 lors de la SAE S2.01 - Développement d'une application
 
+/!\ Ne prennez pas compte des commits réalisés par une seule personne : la collaboration sur git n'avait pas encore été vue durant ce semestre.
+
 <p align="right">(<a href="#top">Retour en haut</a>)</p>
 
 
